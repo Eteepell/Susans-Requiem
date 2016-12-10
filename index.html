@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Susans-requiem by Eteepell</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Eteepell/Susans-Requiem">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Susans-requiem</h1>
+            <h2>Modern fantasy novel, Dresden files fan-fiction.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/Eteepell/Susans-Requiem/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/Eteepell/Susans-Requiem/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="susans-requiem" class="anchor" href="#susans-requiem" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Susans-Requiem</h1>
+
+<p>Modern fantasy novels, Dresden files fan-fiction.</p>
+
+<p>Susan's Requiem Series</p>
+
+<p>Welcome to my first attempt at writing anything. Like. Ever.
+This first book is written using LaTeX. The application is available for, well, everything from phones to tablets to computers usually for free.</p>
+
+<p>What you can and can't do is in the license, see `LICENSE' for a layman's version.</p>
+
+<p>Under windows the best free application is MiKTeX
+For Linux/UNIX the program I use is TeXstudio and there are many, many others for this platform.
+For android there is TeXPortal and optionally TeXpert which aren't maintained anymore but still work.
+For iOS, such as apple iPad and iPhone, aint nothing free. What's there is runs just shy of $15 and includes Texpad and TeX Writer which seem OK.
+For MACOSX the leading LaTeX app is MacTeX. </p>
+
+<p>Additionally any text editor can be used for writing which makes it flexible to an insane degree. You just have to compile somewhere else is all.</p>
+
+<p>To sync everything since I have a computer and android devices I used FolderSync so I could write on my phone when I had spare time to do so. If you
+use that app backup often and be damn careful it's not perfectly intelligent. You'll get used to the gotchas after a while. I use FreeBSD on my home computer
+so I can use the virtual terminal for some writing. It presents nothing but a black screen so I can write without distraction. It was indespensible
+for when I needed it but I don't recommend that operating system for the faint of heart.</p>
+
+<p>I am just adding a repository on github to make the source generally available to fork or review. This work is not even close to draft yet and massive amounts of the source is due to be slashed and replaced.</p>
+
+<p>For anything in the this book source package I tried to use file formats that are compatible with free software (as in FOSS) and as widely compatible as I could. 
+Sometimes that means strange formats like RTF that can be imported into any word processor (ie. word) or the integrated windows program wordpad. I also have a lot in libreoffice format for the same reason. One would either need libreoffice or the ability to upload to a google account and convert. Most MS office versions can convert most libreoffice documents now too.</p>
+
+<p>The Susan.tex file is the root document that contains the code used to format the book. Always compile from this file only. I grabbed it for free off the 
+internet (I didn't write the code myself, I may be crazy but I ain't that crazy) and changed it somewhat to suit my needs. It came from 
+Overleaf (<a href="https://www.overleaf.com/latex/templates/fiction-novel/pjdthvgdtsfy#.WBITwsIpAol">https://www.overleaf.com/latex/templates/fiction-novel/pjdthvgdtsfy#.WBITwsIpAol</a>).</p>
+
+<p>I recommend producing a PDF and sending it straight to the printer (ie. publish as is) since LaTeX is a typesetting program no further processing needs to take
+place before it's ready for a print run (within your own judgement of course).</p>
+
+<p>To produce an e-book I used Pandoc to make an epub usable in most ereaders, then Calibre to convert it to a mobi format for Kindles. It works well. recently there has been a glitch in pandoc and the title page wont compile into epubs anymore. A fix to allow compilation has been placed in the root folder for volume 0</p>
+
+<p>So if you don't like the book, don't bitch and moan, put your ass at a keyboard and fix it yourself dumbass. I would like to read it when you're done.</p>
+
+<p>Tools used under FreeBSD for writing:</p>
+
+<p>vidcontrol
+vidcontrol -i mode 
+vidcontrol MODE_xxx </p>
+
+<pre><code>allscreens="MODE_xxx"
+</code></pre>
+
+<p>and put this in " /etc/rc.conf " to be persistent on reboot.</p>
+
+<p>plot outline is 30x90 for CAD printers at UPS or other locations, so you can
+have room to plan adjustments.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/Eteepell">Eteepell</a> can be found on <a href="https://github.com/Eteepell/Susans-Requiem">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
