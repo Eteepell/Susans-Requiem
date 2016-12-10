@@ -1,0 +1,286 @@
+\lettrine[lines=2,lraise=0]{T}ime to Rock. Get some items for pistol smuggling. Swing by the sporting goods store for firearms cleaning supplies, ammo and the like, then off to the library with a stack of hacking manuals. It seems so wrong. Maybe a hoodie and gangsta pants would make it right. Need a pocket protector for the hoodie to make the look complete.
+
+OK laptop on lets go for a spin with wireless.
+
+Checking the network map I scribbled down, admin.mgel.us good, now lets skip a risky port scan and just go with what we got here. a VPN tunnel is setup for remote administration on this box. Logged in perfectly. Debian linux system they are connecting using SSH, which is expected nowadays. Lets run some traces to check latency on the network.\\
+\bigskip
+
+First to check the path from here to that office.
+
+\begin{verbatim}
+	#traceroute admin.mgel.us
+	traceroute: admin.mgel.us has multiple addresses; using 173.194.219.99
+	traceroute to admin.mgel.us (173.194.219.99), 64 hops max, 40 byte packets
+	1  vl160-d2.acc.sea2.hopone.net (192.94.73.3)  1.698 ms  10.577 ms  2.837 ms
+	2  ge4-2.core1.sea2.hopone.net (209.160.60.197)  8.487 ms  5.580 ms  2.830 ms
+	3  xe5-0.core1.sea1.hopone.net (209.160.62.162)  143.147 ms  153.241 ms  221.431 ms
+	4  * * *
+	5  66.249.94.212 (66.249.94.212)  62.737 ms  36.645 ms  33.089 ms
+	6  74.125.37.211 (74.125.37.211)  22.787 ms
+	209.85.248.93 (209.85.248.93)  15.559 ms  5.345 ms
+	7  72.14.233.110 (72.14.233.110)  42.087 ms
+	72.14.239.208 (72.14.239.208)  42.665 ms
+	72.14.233.110 (72.14.233.110)  43.943 ms
+	8  209.85.248.116 (209.85.248.116)  78.970 ms
+	72.14.239.90 (72.14.239.90)  77.351 ms  77.479 ms
+	9  209.85.143.193 (209.85.143.193)  76.990 ms
+	209.85.254.105 (209.85.254.105)  88.906 ms
+	10  admin.mgel.us (64.233.174.133)  80.707 ms	
+\end{verbatim}
+\medskip
+
+All appears quite normal Latency is a good judge of health and the connection speed should be good too. At least until we know otherwise. Lets try the VPN and hope to hell the passwords I have actually work. Add a system connection name. Call it ruffles. Now please realize I did my research and I'm following steps from a couple books and more than a couple websites. I ain't no hacker but I know enough by experience to find what I need and run like hell if I fuck up. Which happens more often than I dare to admit.
+
+\begin{verbatim}
+	password-flags=0
+	[vpn-secrets]
+	password=booyukker
+\end{verbatim}
+\medskip
+
+Moment of truth let's connect this thing.
+
+\begin{verbatim}
+	sudo nmcli con up "ruffles"
+	Connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnections)
+\end{verbatim}
+\medskip
+
+Oh sweeeet! The password information works! I'm right where I want to be now. Let's try root access. Got that password too. The thing with being able to log into a server with root is you have absolute control over that server. I mean absolute control. I'll have to use this guy mandeville's account. direct connection to root remotely is pretty much always blocked.
+
+\begin{verbatim}
+$ ssh mandeville@admin.mgel.us
+mandeville@admin.mgel.us's password: 
+NetBSD 7.0.1_PATCH (GENERIC.201607220540Z)
+
+% su root
+Password:
+# 
+\end{verbatim}
+\medskip
+
+Not like in the movies really boring actually. Until you get done what you got to do. That ``su'' command escalated me to root from the mandeville account. Mission accomplished. Now I need to check if I can access the internet firewall. The redirection will need to happen there. Secureshell otherwise known as SSH is the one and only way to connect for most administrative work on servers today. So lets give it the old college try. I only have a password listed so it seems like they got some dumbass consumer router on point. These guys are awful
+
+\begin{verbatim}
+ssh root@gateway.mgel.us
+root@gateway.mgel.us's password: 
+Permission denied, please try again.
+root@gateway.mgel.us's password: 
+Permission denied, please try again.
+root@gateway.mgel.us's password: 
+Permission denied (publickey,password,keyboard-interactive,hostbased).
+\end{verbatim}
+
+Well that was strike one. I don't know what the hell that box is, it's not on the network map. OK think Susan think, what did we use back in the day. Port scanner, sticky note here, nmap! right, It can read digital signatures for an idea of what this thing is. OK let's give it a whirl.
+
+\begin{verbatim}
+# nmap -O -v gateway.mgel.us
+
+Starting Nmap ( http://nmap.org )
+Nmap scan report for gateway.mgel.us (64.233.174.133)
+Not shown: 994 closed ports
+PORT      STATE    SERVICE
+22/tcp    open     ssh
+80/tcp    open     http
+646/tcp   filtered ldp
+1720/tcp  filtered H.323/Q.931
+9929/tcp  open     nping-echo
+Device type: general purpose
+Running: FreeBSD 10.2
+OS CPE: unknown
+OS details: unknown
+Uptime guess: 1.674 days (since Fri Sep  9 12:03:04 2011)
+Network Distance: 10 hops
+TCP Sequence Prediction: Difficulty=205 (Good luck!)
+IP ID Sequence Generation: All zeros
+
+Read data files from: /usr/local/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 5.58 seconds
+Raw packets sent: 1063 (47.432KB) | Rcvd: 1031 (41.664KB)
+\end{verbatim}
+
+I don't like port scanning tools, too easy to trigger a red alarm. I was actually very lucky the administrative machine had it installed. Normally there aren't any ``offensive'' tools resident on network servers. I wonder what the deal is here? I need to tread carefully.
+
+What do we got? a FreeBSD box. This place is a BSD shop for sure. I have a password but it isn't working. Not a root password. The www port is open so there's a web page there. Let's see if we can surf the gateway.
+
+Ohhh. The browser opened a pfsense administration page. Sticky note time. Default username is admin. Perhaps they only changed the password?
+
+Yup, logged right in. OK now I know what I'm dealing with. Time to break away from this before I frick something up and get caught. I need to create a rule to use in order to redirect traffic now that I know what I'm dealing with. So I grab the Kali CD out and tuck in a hidden pocket. Let the laptop boot windows and flip it closed. I say the laptop runs kali linux because for all intents and purposes it does but windows is still on the computer with ditzy apps and official looking business documents. Basically to cover up any shady work I've been up to and stay out of trouble.
+
+Bloody hell, just like from the US Marines that just burst through the door. What the hell are US Marines doing in the ghetto?
+
+``Everyone will submit to search, any who do not submit will be taken into marine custody for questioning. We will start with you.''
+The master sergeant proceeded to deploy his men in tactical positions when shortly two more men entered. The salutes were immediate and powerful.
+``General Lancaster! Sir! Area is secure to proceed with investigation Sir!''
+Oh my God, what the hell is a marine general doing in a ghetto! Christ Susan if you don't have a story here! Something is up, and unless angels fly out of Obama's ass this is hitting the front page of any paper! So the search proceeded specifically for electronic equipment. The general had with him an officer who seemed to be well trained in electronic warfare. Looks like perhaps black hat shit. One of the soldiers snatched my laptop rather forcefully and the black hat examined it fully. I was sweating bullets. Not literally thank God given the company I'm keeping at the moment but nonetheless I hoped I had enough training to not leave enough of a trace.
+``This thing is clear general, this couldn't have generated the connections. Nothing in the logs, hardware MAC is incorrect and it looks like it was setup by a homemaker all cheesy games and recipe lists.''
+The general responded, ``Goddamned MGEL admins, fricking off for a coffee and refuse to register out. We go out chasing some Goddamned shade midafternoon just to find he was doing his shit on a Goddamned park bench outside the motherfricking target address. Jesus Fricking Christ pack it in boys we're going back to assignment.''
+The military has their way with words. Anyway it's time to get a hold of my teacher and see if he can draw up some rules for me. I could probably do it but I'm getting a headache just thinking about it. Mercy.
+
+I head back to the rectory and lay down for a bit. I don't actually lay down much. I should. It's nice. When one has no need for sleep and uses meditation to break the days laying down is just something that gets forgotten as a pleasant and relaxing thing. Like a hot bath. People used to enjoy the relaxing heat of a hot bath then getting clean moved the way of the shower and relaxing heat moved toward the hot tub. Fascinating how things change. The next course of action I'm thinking of may be a bit dangerous. There are marines here and I need to find out more about that. Maybe the first thing is to find them physically. What is their assignment? I feel like I should do a real stakeout of the warehouse now, dollars to doughnuts that's where the marines are going to be when things go down out there. I'll send out the E-Mail request to my buddy first. If I don't do a stakeout now I don't see where it would be easy for me to sort the captured data, I wouldn't have a point of reference to look for. Text queries makes things quick folks, either by the grep command or a more sophisticated keyword search if you have the right words it's easier to pull better stuff out of the muck. I think I will have that bath. I can't stop thinking about it.
+
+Well I did a complete strip clean of my glock. Cleaned and oiled, completely serviced. Took that cloth holster and put it through the wash. Now it's clean with a spring blossoms scent. Got it patched and sewn. I believe I know exactly where the glock came from. This variant is standard issue with some marine units. I'll bet you one of the boys felt playful and one of the girls decided to take it as partial payment. That's my guess. So I might be seeing more of these out there tonight if there's any action.
+
+Father Gomez has been looking at me kinda funny since the confession, I guess he doesn't know what to make of me.
+He asks, ``Susan. I'm curious. Do you have a true form as they call it? I have been around vampires enough to know about it.''
+``Uh. Yes. That's a question I wasn't expecting what's your thought?''
+``I won't know until I see. If it's ok, and not too awful Susan.''
+``Surprisingly not actually. Quite attractive as it goes. Sure, I'm a bit large though is there anyone in the main church right now?''
+``No, all locked up, we can go there.''
+``Prefer if you looked around father, the dignity thing with the melting flesh mask and such.''
+``Mercy, OK no problem Susan''
+I change over, very happy for the extra space. Wearing a blazing white tunica this time. Belted, sleeveless one strap and coming down to mid thigh. Ancient greek sandals laced to upper calf. I thought the look complemented the wings, which I proudly unfolded to a meager 20 feet tip to tip. I thought it a conservative and pleasing way to have my wings kept.
+``mmhmm. I know you probably are holding back the wave of fear that would normally radiate from you so thank you. I believe you may have given me the answer I was looking for.''
+``Pardon?''
+``You gave me many answers of a very concrete, maybe even scientific nature but I am a priest in the end and I live through faith. I needed to find my own answer, or at least possibilities, by faith.''
+``Gotcha.''
+``I get you aren't really catholic. That's OK in the sense that all is on God's own time. Would you like to hear my hypothesis anyway?''
+``What the hell, err, sorry father.''
+``Have you ever heard of the parable of the talents?''
+``Father I don't have the slightest clue.''
+``Sit, I'll read it.''
+\medskip
+
+\begin{terminalview}
+\begin{quote}
+	even as a man going into a far country, called his servants, and delivered to them his goods; And to one he gave five talents, and to another two, and to another one, to every one according to his proper ability: and immediately he took his journey. And he that had received the five talents, went his way, and traded with the same, and gained other five. And in like manner he that had received the two, gained other two. But he that had received the one, going his way digged into the earth, and hid his lord's money. But after a long time the lord of those servants came, and reckoned with them. And he that had received the five talents coming, brought other five talents, saying: Lord, thou didst deliver to me five talents, behold I have gained other five over and above. His lord said to him: Well done, good and faithful servant, because thou hast been faithful over a few things, I will place thee over many things: enter thou into the joy of thy lord. And he also that had received the two talents came and said: Lord, thou deliveredst two talents to me: behold I have gained other two. His lord said to him: Well done, good and faithful servant: because thou hast been faithful over a few things, I will place thee over many things: enter thou into the joy of thy lord. But he that had received the one talent, came and said: Lord, I know that thou art a hard man; thou reapest where thou hast not sown, and gatherest where thou hast not strewed. And being afraid I went and hid thy talent in the earth: behold here thou hast that which is thine. And his lord answering, said to him: Wicked and slothful servant, thou knewest that I reap where I sow not, and gather where I have not strewed: Thou oughtest therefore to have committed my money to the bankers, and at my coming I should have received my own with usury. Take ye away therefore the talent from him, and give it to him that hath ten talents. For to every one that hath shall be given, and he shall abound: but from him that hath not, that also which he seemeth to have shall be taken away. And the unprofitable servant cast ye out into the exterior darkness. There shall be weeping and gnashing of teeth.
+\end{quote}
+\end{terminalview}
+\medskip
+
+``It's all a matter of perspective perhaps, but that grace that was spoken of you I see. Of holy things and holy people I know far better than horrors and vampires. You are truly beautiful in true form Susan and it is a radiation of warmth, perhaps of love and tenderness. Of vampires there is fear, lust, addiction and all manner of vices which come from them which corrupt. I realize you are holding back from radiating that corruption but truth stands regardless. What I say is the reds, perhaps vampires in general, were given life and grace in proportion to their ability to do right with it. They never did right with it. All was taken from them in their greed, even their own lives, and was given to one worthy who will invest it in that which is right and good. That would be you. Hence you having been taken under the churches wings and gain favour of priests. We are seeing the grace you cannot, we are protecting you as you grow. Again, just my perspective given all I have learned take it or leave it as you wish.''
+``Best to leave it father. I'm taking it as it comes. So many conflicting perspectives for a woman who has hardly learned the first thing about who she is or who she is going to be. So much pain and sorrow from past guilt and experience. Yes father I've heard what you have said, and I agree there is sense, and I leave it for the day when I can accept such counsel.''
+``So Susan, do you actually fly?''
+``Like an eagle father, but my true wingspan is a hundred feet and my body weight is actually much lighter in true form.''
+``Holy moly! a hundred feet? God bless you Susan you truly are a woman like no other.''
+``Thank you father it means a lot.''
+``Love the Tunica too by the way, very classical.''
+``Thank you again father.''
+
+I start getting ready. I shape shift into marine fatigues with full webbing and ruck and strap on the glock. I shape shift a KA-BAR under the other arm. Various little supplies I put in the webbing and make it real and ready for an infiltration. I include among other things my phone for photographic media and recording and a really boring brown colour trench coat to conceal the warrior underneath. Going on this little mission makes me think I should practice some unarmed combat when I get home. It's not that I don't know how just that in this new form it's a toss-up if I punch people into chunks or a fine mist. I don't want to find out.
+So I start to walk over to the warehouse. Nobody really pays me much attention even though I look like I must be hot. Really though I soak the heat right in. I seem to be a cold blooded creature I really enjoy hot and humid weather. It's approaching evening now when I get there. I look and listen and there is nobody here. Unless they're dead. In which case they won't notice me anyway. I would assume. I climb to the roof, using the ladder outside the building this time. I put away the cloak, finish my dress with things like putting on the boonie and finishing face paint as well as tying back my hair. I go over to the front edge of the roof and take out my scope to remain hidden and be able to see the truck assuming it's coming tonight. My ears can hear a pin drop from 50 paces as if it was a crash of thunder so it's not likely anyone is going to sneak up on me.
+
+Sometime after midnight I see the lights of a military truck roll in. A fair size canvas top likely a couple long rows of benches inside. It stops snug to the buildings main door. I hear the sound of men exiting, a couple dozen I would say. I pick up pieces of conversation inside as I sit on the edge of the roof. Test subjects, ensuring their protective devices are functional. They are taking their ``places'' and the subjects are released. I hear hissing from below. Oh God tell me it isn't what I think. I hear commands going down to the creatures line up, spread out, take position, fight, relent, and so on. They are taking orders like soldiers and being commanded to fight. I get to the trapdoor and use my scope to look down. I am just over the top catwalk and see some men including the general stationed in the control booth closest to the top of the structure. There are actually white coated scientists making notes up there with MGEL insignia on their coats. I look below and see the ugliest test subjects I have ever seen, black court vampires! What in the fricking hell are these people doing? Are they completely mad!
+
+Extraordinarily enough the vampire are obedient. They are taking orders and fighting. There were 2 who broke free but the soldiers present took them down with conventional weapons, as well as holy water, garlic, holy symbols and such. The little bloodsuckers didn't have a chance. Maybe that's why they obey like they do. If they all united together though they could be able to break free. Why haven't the munched the other soldiers. There's what I see, what I hear, smells like putrification but also of garlic. Taking a closer look there is something hanging from the soldiers necks, and I see the item exposed on one soldier. The wear garlic. Probably other items as well so they are protected.
+
+``How many of the subjects have been able to independently carry out orders?''
+``We have released 6 subjects in the last 2 weeks general, 4 have returned and we have confirmed have met their objective. The two remaining have not returned.''
+``We need to carry back at least a 95 percent conformance ratio so we need to keep working. The DNA injections progressing well?''
+``Satisfactorily sir. Ever since we started with the cream based application and applied the solar radiation the changes seem to be taking place. Some of the expected human characteristics in personality seem apparent allowing more control and more self discipline.''
+``How much longer?''
+``Months, on the outside, assuming progress continues at the current rate.''
+``That's excellent. The perfect super soldier. Scary as hell, tough, fast and strong. Able to raise dying enemies to fight alongside them. Incredible.''
+
+My stomach turned. I've heard of monstrous experiments to create new and terrible weapons and even supersoldiers, but someone really didn't think this one through. Vampires are organized you fools! Flooded with intrigue and backstabbing yes but united, their word being their bond like any of the supernatural beings. They could bring a war. Humans have no chance in such a war vampires are higher up the food chain.
+
+As I pondered the ways of idiocy below I seen the creatures stop what they were doing. The were sniffing the air. Like dogs. Some of them climbed the walls ten feet sniffing. They all started orienting their eyes, and eye sockets as it were, directly at this hatch and let out a hiss. Oh hell I'm in some trouble, mmhmm some trouble yep. They lit a straight line directly for me. Soldiers opened fire the general and all the softie scientists hit the floor. The general opened fire with a pistol right through the window of the control booth. The creatures couldn't have cared less they smelled me without the lovely aroma of garlic. Time to practise the art of pulling punches I guess.
+
+I did a tuck and roll out of the way of the hatch and at least a dozen black court vampires sprang out of it with a united hungry hiss. I heard below the call for all soldiers to hit the roof and make the attack. The test subjects are not to escape. The first three i avoid with a leap to the left and barrel roll. Two more come to the left i pull up hard on my hands and use the momentum from the roll to land a solid boot to the two knocking them down. I follow through punching through one of the next two. Grabbing my KA-BAR i come behind another and remove a head. One down. Four are advancing i holster the KA-BAR, then cartwheel back onto one knee and open fire with my glock those four go down. I leap high and force both steel toed combat boots down hard on two of the four destroying skulls. Three down.
+
+The general and soldiers arrive as a trickle through the hatch on the roof, and the general has his holy shit face on. The soldiers are going to fire but he yells, ``hold fire you morons, there's a soldier on the roof. You goddamned ballerinas take notes because that's how it's fricking done right there!''
+
+The two remaining each grab an arm i leap my body behind them and crack their skulls together and they let go. I unsheathe my ka-bar and make a vicious swing. Off goes a head. Now 4 down. They rush in I tuck and roll knocking over one and plant the ka-bar through it's skull. 5 down and 7 left. They pile on me and I become a chew toy. Shit.
+
+The general shouts, ``frick, she's gone. Hell of a soldier. Ready weapons to fire!''
+
+I burst straight up through the pile and blast three rounds straight down. 2 exploding skulls, 2 more down.
+
+The general shouts, ``hold fire! Jesus Christ what is this Die Hard? Who is this soldier?''
+
+The soldiers shout in unison, ``Hoo Rah!''
+
+The third I crush under my boot 1 down 4 to go. Tuck and roll knock one down, grab my KA-BAR then plant my feet and reverse momentum. Launch at one and remove it's head. I land and turn ready to roll to the side but one decides to rush in and meet my KA-BAR, so off goes another head and 2 to go. Both rush in i leap forward and clothesline both to the ground. I tuck and roll come up with the glock and shatter a skull. The remainder made it to the 3dge of the roof in time and jumped. Somehow it landed in one piece. The soldier open fire on it but it leaped the fence and was gone.
+
+The general walked up, ``That was some bit of fighting soldier. I don't remember seeing you before you got ID?'' I check my pockets in a fake attempt to find ID, then I point to the pile of dead vampires, ``on it's way to hell?''. The general responds, ``well shit so it is, fuck it I seem to suddenly be getting my memory back I remember you just fine. Come on down have some whiskey on me. Men stand down lets get back to it.'' I descend and notice a shit ton of juicy paperwork waiting for a pocket or a photo. Checking down below there seems not to be any more ``subjects'' to work with. I seem to have destroyed them all. Aw shucks. The general states, ``I'm going to go down and help the boys clean up this mess. Well frick I wish I knew what the hell might have caused this shit.'' He gives me a devilish smile.
+
+So I'm left with a couple drunk scientists who tried to use liquid courage to bolster themselves earlier. Easy as pie my phone works so i snap some verifiable media with the camerav app, and other papers i just pocket. The scientists are too drunk to know. Then i go down and help clean up. The whole time snapping photos where i can. When it's time to go everyone boards the truck except me who holds on to the undercarriage. Down the road i tuck and roll out of the carriage and into an alley. I move into the rear area of a shop with spare garbage cans and a huge propane tank and take a breather. I meditate a couple hours then get up and make my way towards the parking lot to try and make sure the troop truck doesn't double back to find me.
+
+As I walk out I find myself ambushed by the black court. They probably seen me while i was meditating. Should have waited until i was back to the rectory shit.
+
+There's about 2 dozen maybe more. Although no people around now so i can let rip so not so bad. They spread out directly in front of me and about 3 walk out to face me closer than the rest. One speaks.
+
+``The three of us are the elders of this district. You have killed a dozen of our brethren. You, a mere mortal, have embarrassed us in front of our court and all vampires. You have invited destruction to us and have dishonored us, you who are no more than food. You foolish pathetic creature did you think we would let you live after such insolence? You are going to wish you died on the roof for now your death will be slow and quite painful I assure you.''
+
+I spread my stance to get ready for what's coming, ``OK, come give me a little. Don't be shy.''
+
+One of the other elders shouts, ``more insolence! Take her down! dont kill her I want her alive to play with later!''
+
+Holy shit did they ever send in the troops! Not a couple dozen, many dozen. Oh yes many dozen rushed out from around the corner. OK, so i can use vampire strength but i do worry about using epic strength, like that little extra bit of juice that shows me up as an ascended creature to them. I dont want to get noticed by something even bigger than me. I want to get my life back not get into the superhero market battling super-villains the rest of my days. He wants me captured so i'll get captured and break away. Easiest thing. What happens next time though? They arent going to forget and thats what i want most.
+
+So without a better plan i decided to just go with just chilling at the bottom of a football style pileup and getting driven back to the day spa they offered me.
+
+Trouble was i didnt like how they were trying to feast on me anyway. It hurt real bad and i was getting really pissed. I noticed for lack of a better word i was smoking. Light black smoke was drifting off my body and i was getting real hungry. One of the vampires broke through my flesh mask and stood up quick, ``My lord, we have a big problem here!'' 
+
+The elder that he addressed said, ``what the hell kind of problem could you have?'' 
+Another vampire broke through and screamed, ``She's red court!''
+``What! Impossible! The red court is dead! Kill her! Kill her! Do not let the red court return!''
+
+Oh i lost it. I snapped. These guys are a liability now i need to wipe them out before I'm revealed! There were a dozen on me i burst straight up and some kind of speed do i have. I went down with a fist before they moved 4 slammed into a wall. Now the strangest thing happened. The smoke edged toward the 4 and a thick oily smoke rose from them. It flowed into me and they had what looked like a grand maul seizures, then they were still. Then they turned to dust. I turned to face the remaining vampires and my fangs were dripping what was in appearance hot tar, that same colour and consistency.
+
+The elders hit the dirt in prostration so fast i thought they might have eaten gravel. ``Spare us oh great mother, queen and empress we did not know have mercy on us!'' The other vampires looked at each other then prostrated the same. Oh shit, what did i just do. Can i get out of this? I cant kill them now, as much as i hate vampires i cant hurt any being if it is begging mercy. I don't think they will take it back because i have no idea what tipped them off. Oh this is not good, not good at all. I'll play dumb.
+
+``excuse me?''
+``you are the long awaited great mother, the one prophesied to lead the vampire courts to world domination! You are her the devourer of souls! We are your servants great one, we are your children oh great mother lead us and guide us!''
+
+Sounds like I'm Jesus Christ with boobs, should i speak parables? Cant bring them back to the rectory i wouldn't think. Their skin is falling off i'll call them lepers. Hah, no. I don't really want to go to their lair it would be horrible, bodies piled around people mind controlled and chained to be used for food i cant handle it. I need time to figure out what to do.
+
+``meet me at the church cemetery 3 blocks west, in two days. Once it's dark. We will talk then. I have important tasks to perform.''
+``yes my queen it will be so''
+
+Well, tomorrow I start the network redirect to check for useful E-Mail and gather the papers and photos. I'll also start my report. What I have now is damning enough alone but there is no such thing as too much evidence.
+
+I spend the rest of the night in meditation. Me and Maggie fly together and i think her dream control may be getting to where she might have her own little wings soon! We also played with the tea-set we made together in our little dreamworld. I wonder if she is old enough for astral projection? Heh heh. Don't push it Susan.
+
+I start the redirect of network traffic in the morning. I'll leave it going for at least a week and grab Wireshark and that book i got for it and run the data capture through a sive to find juicy E-Mails.
+
+I talk to father about the event and he recommends considering we both hate vampires but if a group of them look up to you in such a way then godless or not you could influence them in ways combat cant. He says try, the worst thing I could do is fail then I'm just back to not being an influence having lost nothing for trying. Hell that seems ok to me.
+
+I strip cleaned my glock and did that laying down thing again. I like it. Its very comfy.
+
+I feel like this might be an important story for me, so I created an E-Mail address and a pen name. I also drew up a binding agreement so that the arcane has to publish my pen name and contact in the article so I can get feedback on this one. I have material of a high calibre in it and I can learn a lot about writing this kind of story in the future. I mean this is like the pelican brief of paranormal articles. The best i've done to date i think and the electronic surveillance is just started.
+
+Another meditation tonight. Me and Maggie were making up stories with pictures on tarot cards which was fun. We chased a real live dreamworld polar bear then. We scratched it's belly and it's feet would twitch it was so cute. She hasnt got to grow her wings yet but i hold on to her and we fly all over. It was fun. I still hope to hug her in the real world someday soon.
+
+Time does fly. I head over to the cemetery a bit early and sit on a tree stump. Best seat in the house. Over the course of an hour after sunset they begin to arrive. Five, then ten, fricking fifty then frick me gently i think it was a hundred vampire souls came.  It was like that loaves and fishes story in the bible they just kept coming.verily verily i say to thee the cemetery was alive with undead.
+
+``tell us what we must do most glorious queen.''
+\begin{quotation}
+``take only the prey you need to live and no more. To be ruled by hunger is to be enslaved, to lose honour even to the point of being fit only for destruction. Have honour in all things, any to be shown gravely lacking are to be destroyed. Strength and honour are the greatest virtues of our kind let no one tell you otherwise. By strength we will take to battle. Only by honour though can an empire truly conquer and subject it's foes. The only way to have honor is to give it away, show honour and it will be increased in you. Honour is not a rule of law to be obeyed in rote, it burns in the heart of the vampire. The vampire is honour and from there it comes forth to illuminate others in it's righteousness. Honour your prey, they give their lives so that you may live. Remember this always. Do not offend the dignity of the prey, they are free we are not to bind them this is an offence to dignity. Protect the prey, just as the Sheppard would lay down his life for his sheep we must also for our own flock they are our food and our life. This is also how we honour our prey and one way how each coven's honour will be judged.''
+Continuing, ``You duty now is that all will cleanse their house of the dishonourable. Every house will be judged  by the honour of those who belong, a dishonourable house is destroyed, the honourable within banished upon their honour let them never forfeit the honour they have on pain of death. we will be houses, the bloodline families or adopted kin. Clans, organised for each town or municipality of human law. principalities for the country and kingdom for the continent. I am great mother, empress or queen. There will be no other queen but me. The white court as is their will shall unite with us under their own houses and clans. We are one empire, one blood unites us. So speaks the last and greatest of her kind. I leave you now to speak among yourselves. Leave when you wish and no feeding in the cemetery please.''
+\end{quotation}
+
+a mass wave of prostration followed, visually appearing like a domino effect, ``hail to our great mother, our philosopher queen!'' Followed by a thundering ``hail! Hail! Hail!'' Then they disappeared into a non-corporeal state. They will hopefully come to understanding because with a single short speech i saved innumerable human lives and hopefully put an end to all the people in chains or tortured currently by these monsters. As I was walking away I missed Maggie. The talking of the great mother thing just made my heart bleed, I want to be with my baby. I turned back to the cemetery for no particular reason and my vampire vision went up. I could see all the vampires talking in their non-corporeal forms that humans cant see. The thing is I can bring up vampiric vision, the big black eyes, at will now and gain all the benefits. I would assume unique to me I have a nictitating membrane that protects the eyes in bright sunlight and during flight. It's translucent so in the day i look not unlike someone blind from some degenerative condition. Which is a help to me.  I could hear the quiet telepathic chatter they were making. I just stood there a few minutes in awe of what i hope to be accomplishing from within this vampire society to help people. Help them from within the ranks of the oppressor. My mind started wandering through my fight and struggles against the red court for all that time, the hopeless frustration of what seemed so often to be a hopeless battle against hopeless odds. Like trying to bail out the ocean with a spoon. Now having been made a vampire if i could call it that I am looking at the best chance to finally make things right. Something i could never do before. Maybe even use my work to release them of this accursed hunger.\\
+\bigskip
+
+Then I felt something unexpected. Horribly shocking.\\
+\bigskip
+
+I felt love.\\
+\bigskip
+
+Not pity, not sympathy or empathy. No, a burning love ignited in me like a mother to her children. I'm falling in love with these wretched creatures very quickly and very powerfully after interacting with them as their great mother. Almost like they had tempted me to do something only to have triggered the catalyst to my own transformation without my warning. The second bite of the heart. I remember all the horrors i've seen these creatures do but all i can think now is to embrace them and heal the twisted nature that commands them to do such horrible acts. I see them and they have become beautiful to me. Oh frick me gently that is just so wrong on so many levels.
+
+I arrive back at the rectory to see a complete skeleton standing beside the door. ``Hello, I am He Who Dances With Wind.'' He prostrates. I bid him rise again. That shit is so embarrassing. ``Are you a skeleton?''
+``I am a black court vampire''
+``but you are no more than a skeleton''
+``I am the most elder of the court. I have walked this earth from before the reckoning of time. Before civilization came upon the earth. Even upon all these years spoken record heralded your coming. I never thought I would see the day I would stand before you.''
+``So you are what would be called an ancient vampire then.''
+I look at the door, then back to him, what the hell. Father has heard worse from me I'm sure he wont mind seeing worse also.
+``Are you able to enter a holy place? Would you be hurt?''
+``My power rivals your own Susan I'll be fine.''
+``How did you know my name? Never mind, ancient vampire, needn't ask more. Please come in.''
+We sit at the kitchen table to parley.
+Father Gomez came in and fell flat on his ass.
+He Who Dances With Wind stood and bowed low to father, ``I am sorry to have startled you most honourable shaman, i am He Who Dances With Wind. I am the most ancient of vampires at your service oh king.''
+father rose, and coughed, ``you presume i am a priest king like Melchizedek high priest and king. Truly ancient you are, I am no shaman but the humble priest of the most high god. Um, my dear?'', he raises an eyebrow.
+``he is very polite i didn't think you would mind.''
+Father makes a face-palm. Taking the seat across from us at the table he looks to He Who Dances With Wind and rubs his chin.
+We talked until morning and father agreed to allow he who dances with wind to stay if he can do penance by staying in the crypt to clean and maintain the tombs. He agreed.
+It continued that way and he would come up and father was fascinated with his experience and understanding. He stopped feeding millennia ago, he was tired of it. He left to become a hermit. And a legend of the vampires in the north east of the US. Only the elders would dare approach him and never did except on rare occasions.
+
+I gathered the email transactions at the end of the week and found some rather juicy stuff. In particular the messages to and from the main office. If they actually used gpg for their confidential email I wouldn't have been able to have snatched what I did. The story is done and sent. 
+My wise man who came from afar, He Who Dances With Wind, is going home. This time he is being granted permission by Rome to remain as a hermit on land governed by Rome. 
+The native americans of new york state, the highest elders specifically, also became aware of him and he spends much more time sharing lodge on reservations sharing knowledge lost long ago of the history of his people which now is the history of all native people. Last i heard him say he is happier than he has been in a long time. Which to me means a very very long time.
+
+

@@ -1,0 +1,226 @@
+% universal settings
+\documentclass[smalldemyvopaper,12pt,twoside,onecolumn,openright,extrafontsizes]{memoir}
+\usepackage[utf8x]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage[cmintegrals,cmbraces]{newtxmath}
+%\usepackage{tgchorus}
+\usepackage{ebgaramond-maths}
+%\usepackage[osf]{Alegreya,AlegreyaSans}
+\usepackage[T1]{fontenc}
+
+\usepackage{courier}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{lettrine}
+\renewcommand{\LettrineTextFont}{\normalfont}
+\newcommand{\parasep}{
+	\begin{center} 
+		\includegraphics[scale=.5]{Images/hrule2.png} 
+	\end{center}}
+\newenvironment{terminalview}{\fontfamily{courier}\selectfont}{\par}
+\newcommand*\NewPage{\newpage\thispagestyle{empty}\mbox{}}
+\graphicspath{ {Images/} }
+
+
+% PACKAGE DEFINITION
+% typographical packages
+\usepackage{microtype} % for micro-typographical adjustments
+\usepackage{setspace} % for line spacing
+\usepackage{lettrine} % for drop caps and awesome chapter beginnings
+\usepackage{titlesec} % for manipulation of chapter titles
+
+% for placeholder text
+\usepackage{lipsum} % to generate Lorem Ipsum
+
+% other
+\usepackage{calc}
+\usepackage{hologo}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{showframe}
+
+% PHYSICAL DOCUMENT SETUP
+% media settings
+\setstocksize{8.5in}{5.675in}
+\settrimmedsize{8.5in}{5.5in}{*}
+\setbinding{0.175in}
+\setlrmarginsandblock{0.611in}{1.222in}{*}
+\setulmarginsandblock{0.722in}{1.545in}{*}
+\setlength{\parindent}{0.5em}
+
+% defining the title and the author
+%\title{\LaTeX{} ePub Template}
+%\title{\textsc{How I Started to Love {\fontfamily{cmr}\selectfont\LaTeX{}}}}
+\title{The Quickening of Susan Rodriguez}
+\author{Eric B. Teepell}
+% \newcommand{\ISBN}{0-000-00000-2}
+\newcommand{\press}{Susan's Requiem series prequel}
+
+% custom second title page
+\makeatletter
+\newcommand*\halftitlepage{\begingroup % Misericords, T&H p 153
+  \setlength\drop{0.1\textheight}
+  \begin{center}
+  \vspace*{\drop}
+  \rule{\textwidth}{0in}\par
+  {\Large\textsc\thetitle\par}
+  \rule{\textwidth}{0in}\par
+  \vfill
+  \end{center}
+\endgroup}
+\makeatother
+
+% custom title page
+\thispagestyle{empty}
+\makeatletter
+\newlength\drop
+\newcommand*\titleM{\begingroup % Misericords, T&H p 153
+  \setlength\drop{0.15\textheight}
+  \begin{center}
+  \vspace*{\drop}
+  \rule{\textwidth}{0in}\par
+  {\HUGE\textsc\thetitle\par}
+  \rule{\textwidth}{0in}\par
+  {\Large\textit\theauthor\par}
+  \vfill
+  {\Large\scshape\press}
+  \end{center}
+\endgroup}
+\makeatother
+
+% chapter title manipulation
+% padding with zero
+\renewcommand*\thechapter{\ifnum\value{chapter}<10 0\fi\arabic{chapter}}
+% chapter title display
+\titleformat
+{\chapter}
+[display]
+{\normalfont\scshape\huge}
+{\HUGE\thechapter\centering}
+{0pt}
+{\vspace{18pt}\centering}[\vspace{42pt}]
+
+% typographical settings for the body text
+\setlength{\parskip}{0em}
+\linespread{1.04}
+
+% HEADER AND FOOTER MANIPULATION
+  % for normal pages
+  \nouppercaseheads
+  \headsep = 0.16in
+  \makepagestyle{mystyle} 
+  \setlength{\headwidth}{\dimexpr\textwidth+\marginparsep+\marginparwidth\relax}
+  \makerunningwidth{mystyle}{\headwidth}
+  \makeevenhead{mystyle}{}{\textsf{\scriptsize\scshape\thetitle}}{}
+  \makeoddhead{mystyle}{}{\textsf{\scriptsize\scshape\leftmark}}{}
+  \makeevenfoot{mystyle}{}{\textsf{\scriptsize\thepage}}{}
+  \makeoddfoot{mystyle}{}{\textsf{\scriptsize\thepage}}{}
+  \makeatletter
+  \makepsmarks{mystyle}{%
+  \createmark{chapter}{left}{nonumber}{\@chapapp\ }{.\ }}
+  \makeatother
+  % for pages where chapters begin
+  \makepagestyle{plain}
+  \makerunningwidth{plain}{\headwidth}
+  \makeevenfoot{plain}{}{}{}
+  \makeoddfoot{plain}{}{}{}
+  \pagestyle{mystyle}
+% END HEADER AND FOOTER MANIPULATION
+
+% table of contents customisation
+\renewcommand\contentsname{\normalfont\scshape Contents}
+\renewcommand\cftchapterfont{\normalfont}
+\renewcommand{\cftchapterpagefont}{\normalfont}
+\renewcommand{\printtoctitle}{\centering\Huge}
+
+% layout check and fix
+\checkandfixthelayout
+\fixpdflayout
+
+% BEGIN THE DOCUMENT
+\begin{document}
+\pagestyle{empty}
+% the half title page
+\halftitlepage
+\cleardoublepage
+% the title page
+\titleM
+\clearpage
+% copyright page
+\noindent{\small{This novel is entirely a work of fiction. The names, characters and incidents portrayed in it are the product of the author's imagination. Any resemblance to actual persons, living or dead, or events or localities is entirely coincidental.\par\vfill\noindent Draft Edition\space\today\\
+		% ISBN\space\ISBN\\
+		\copyright\space\theauthor.   \par\vfill\noindent\theauthor\space asserts the moral right to be identified as the author of this work. This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.\par
+\begin{center}
+	\centering
+	\includegraphics[width=0.25\linewidth=0.25]{license}
+\end{center}
+\newpage
+{\tiny Disclaimer This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material. You are free to: Share — copy and redistribute the material in any medium or format Adapt — remix, transform, and build upon the material
+for any purpose, even commercially. The licensor cannot revoke these freedoms as long as you follow the license terms. Under the following terms: Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original. No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits. Notices: You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation. No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
+}
+\clearpage
+
+% dedication
+\begin{center}
+\itshape{\noindent{Dedicated to Dresden Files Readers, and \LaTeX \: users worldwide.}}
+\end{center}
+
+% begin front matter
+\frontmatter
+\pagestyle{mystyle}
+% preface
+\chapter*{Preface}
+{First off this is not a Dresden files knock-off. Susan's story has it's own unique character. She is developing stories and relationships all her own and building her own story canon completely independent of the dresden files series, touching only lightly on it. Comparing the two is apples and oranges these two storylines differ heavily. Maybe that's a big blow for some fans of the Dresden Files but suck it up sweeties she's her own woman now. The material is also much raunchier and twisted than dresden files and freely replaces pseudo-vulgarities with the real thing introduces unapologetic erotic features(including paraphilic). Also I am a daemonolater in the real world, literally "demon worshipper" in translation but misleading I will not serve. So also a practitioner of the actual left hand path and initiate sorcerer. It's not as awesome as it sounds no ``fuego`` or anything like it. Think religion, like Wicca meets ACDC.
+
+A final note I've never really been a big reader so the vocabulary is rather straight forward. I only started reading a lot since I became disabled a couple years ago and mostly dresden files novels.
+}
+\NewPage
+% acknowledgements
+\chapter*{Introduction}
+{Losing Susan Rodriguez hurt. As a result I decided to spin-off the character beginning with Susan's survival. Susan's returns full circle back to being the annoying journalist she was. She is going to see happiness and make new friends. Expect her to struggle with her past and find healing. She is going to work to adjust to the dark new world she is entering into. She will find ways to be there for her daughter. She will also learn about herself and that which is hidden, and alien to this world. Her research and publishing of articles have some real world history and occult. In a real way she might be publishing our own true paranormal stories to us unveiling the extraordinary and magickal (note the K at the end) about our own world under the guise of the ancient and forgotten. Over time she is going to gradually learn what she has become as a result of when she was sacrificed, and how she retained her soul. She pours her self-knowledge into her passion for journalism and develops a personal code of ethics necessary for the powerful entity she has become. 
+}
+% acknowledgements
+\chapter*{Background of Susan}
+{Not everyone is a Dresden Files fan so not everyone is going to know who Susan is or what she's been through. This series is going to be an independent endeavour from the Dresden Files proper so once her background is explained here it will be easier to get into the following story. So here goes:\\
+	\smallskip
+	
+}
+\begin{center}
+	\centering
+	\includegraphics[scale=1.25]{Images/Susan/Susan}
+\end{center}
+		
+% table of contents
+\clearpage
+\tableofcontents*
+
+% begin main matter
+\mainmatter
+\chapter{Starting Fresh}
+\input{Susan-ch1.tex}
+\chapter{Not-So-Friendly neighbourhood entity}
+\input{Susan-ch2.tex}
+\chapter{Etheric Revenant}
+\input{Susan-ch3.tex}
+\chapter{D\ae mons Rise}
+\input {Susan-ch4.tex}
+\chapter{Corporate Zombies}
+\input {Susan-ch5.tex}
+\chapter{Ooh Rah}
+\input {Susan-ch6.tex}
+\chapter{Major League}
+\input {Susan-ch7.tex}
+\chapter{Sing Sing of Desire}
+\input{Susan-ch8.tex}
+\chapter{I Brutally Love You}
+\input{Susan-ch9.tex}
+\chapter{The Devil Went Down to Georgia}
+\lipsum[181-200]
+\chapter{Legal Licence}
+\input{license.tex}
+
+% begin back matter
+
+\end{document}
+% END THE DOCUMENT
+
+
