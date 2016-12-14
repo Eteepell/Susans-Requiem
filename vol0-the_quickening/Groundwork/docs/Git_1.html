@@ -1,0 +1,848 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- base_content.html -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Git Push says &#39;everything up-to-date&#39;, remote repo shows nothing - WebFaction Community</title>
+        <meta name="description" content="Hi all, Please note, I&#39;m a newbie to gitweb. I have repeatedly gone over the documentation at http://docs.webfaction.com/software/git.html. The web interface seems to be working as expected. I&#39;ve created a repository and enabled HTTP Push and postBuffer. I&#39;ve set up my project in a local repo, but e..." />
+        <meta name="keywords" content="git,http" />
+        
+        <link rel="canonical" href="https://community.webfaction.com/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing?type=rss">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="google-site-verification" content="3Hn5b-OkMicIh3f376epaWhuG1bind179jVaoPB9k7Q" />
+        <meta http-equiv="X-Frame-Options" content="deny">
+        
+        <link rel="shortcut icon" href="/upfiles/favicon.png" />
+        <link href="/m/default/media/style/style.css" rel="stylesheet" type="text/css" />
+        
+        <link href="/cstyle.css" rel="stylesheet" type="text/css" />
+        
+        <link rel="stylesheet" type="text/css" href="https://jquery-ui.googlecode.com/svn/tags/latest/themes/base/jquery-ui.css" />
+        <!--[if IE 6]>
+        <style type="text/css">
+        img, div, a { behavior: url(/m/default/media/iepngfix/iepngfix.htc) }
+        </style>
+        <![endif]-->
+        
+
+        <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+        <script type="text/javascript">
+        /*<![CDATA[*/
+            google.load("jquery", "1");
+            google.load("jqueryui", "1", {autoload:true});
+
+            var i18nLang = 'en';
+            var appUrl = 'https://community.webfaction.com'
+            var scriptUrl = '/'
+            var osqaSkin = 'default';
+
+            var messages = {
+                username: '',
+                confirm: "Are you sure?",
+                yes: "Yes",
+                no: "No",
+                message: "Message:",
+                cancel: "Cancel",
+                close: "Close",
+                ok: "Ok",
+                matching_tags_url: "/matching_tags/",
+                word: "word",
+                words: "words",
+                character: "character",
+                characters: "characters"
+            }
+        /*]]>*/
+        </script>
+        <script type="text/javascript" src="/m/default/media/js/osqa.main.js"></script>
+        
+        
+            <script type="text/javascript">
+$(function(){
+$('a.show-all-comments-link').each(function(index){this.click()})
+});
+</script>
+        
+        
+        
+        <script type='text/javascript' src='/m/default/media/js/osqa.question.js'></script>
+        <script type='text/javascript' src='/m/default/media/js/jquery.caret.js'></script>
+        <script type='text/javascript' src='/m/default/media/js/wmd/showdown.js'></script>
+        <script type='text/javascript' src='/m/default/media/js/wmd/wmd.js'></script>
+        <script type='text/javascript' src='/m/default/media/js/html_sanitizer.js'></script>
+        <link rel="stylesheet" type="text/css" href="/m/default/media/js/wmd/wmd.css" />
+
+        
+        <script type='text/javascript' src='/m/default/media/js/viewbox_min.js'></script>
+        <script type='text/javascript' src='/m/default/media/js/youtube.js'></script>
+        <link rel="stylesheet" type="text/css" href="/m/default/media/js/viewbox.css" />
+        
+        
+
+        <script type="text/javascript">
+        $().ready(function(){
+            $("#nav_questions").attr('className',"on");
+            var answer_sort_tab = "";
+
+            if (answer_sort_tab) {
+                $("#" + answer_sort_tab).attr('className',"on");
+            }
+
+            $('#editor').TextAreaResizer();
+
+            //toggle preview of editor
+            var display = true;
+            var txt = "[hide preview]";
+            $('#pre-collapse').text(txt);
+            $('#pre-collapse').bind('click', function(){
+                txt = display ? "[show preview]" : "[hide preview]";
+                display = !display;
+                $('#previewer').toggle();
+                $('#pre-collapse').text(txt);
+            });
+        });
+
+        function submitClicked(e, f) {
+            if(!(browserTester('chrome') || browserTester('safari'))) {
+                $("input.submit")[0].disabled=true;
+            }
+            window.removeEventListener('beforeunload', beforeUnload, true);
+            if (f) {
+                f.submit();
+            }
+        }
+
+        function beforeUnload(e) {
+
+            if($("textarea#editor")[0].value != "") {
+                return yourWorkWillBeLost(e);
+            }
+
+            var commentBoxes = $("textarea.commentBox");
+            for(var index = 0; index < commentBoxes.length; index++) {
+                if(commentBoxes[index].value != "") {
+                    return yourWorkWillBeLost(e);
+                }
+            }
+        }
+        window.addEventListener('beforeunload', beforeUnload, true);
+        </script>
+        <noscript>
+            <style>
+                .comment.not_top_scorer {
+                    display: block;
+                }
+                .comment-form-container {
+                    display: block;
+                }
+                .div.comment-tools {
+                    display: none;
+                }
+            </style>
+        </noscript>
+
+        <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="WebFaction Community Search" />
+        
+
+<style>
+#topmenu a {
+    color: white;
+    padding-left: 20px;
+    font-family: 'SegoeUI', Tahoma, Arial, Helvetica, Sans-Serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+#footertable tr td {
+    padding-right: 70px;
+}
+.columnitem {
+    padding-bottom: 20px;
+}
+.columnitem a {
+    color: #aaaaaa;
+    font-family: 'SegoeUI', Tahoma, Arial, Helvetica, Sans-Serif;
+    font-size: 13px;
+}
+.columnitem a:hover {
+    color: white;
+    text-decoration: none;
+}
+.columnhead {
+    color: white;
+    font-family: 'SegoeUI', Tahoma, Arial, Helvetica, Sans-Serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+</style>
+
+    </head>
+    <body>
+
+<div style="padding: 20px 0 20px 0; background: #3b88d1; text-align: center">
+    <div style="width: 988px; text-align: left">
+        <a href="https://www.webfaction.com"><img src="https://www.webfaction.com/local_media/images/logo-white.png" alt="WebFaction" width="207" height="31"></a>
+        <div id="topmenu" style="float: right; padding-top: 5px;">
+            <a href="https://www.webfaction.com/signup/">SIGN UP</a>
+            <a href="https://www.webfaction.com/contact/">EMAIL US</a>
+            <a href="https://docs.webfaction.com/">DOCUMENTATION</a>
+            <a href="https://docs.webfaction.com/xmlrpc-api/">API</a>
+            <a href="https://blog.webfaction.com/">BLOG</a>
+            <a href="https://my.webfaction.com/">LOG IN</a>
+        </div>
+    </div>
+</div>
+
+        <div class="wrapper">
+        
+        <!-- template header.html -->
+
+
+	<div id="roof">
+	  
+		<!-- div id="logo">
+			<a href="/">
+				<img src="/upfiles/webfaction_logo_black.png" title="back to home page" alt="WebFaction Community logo"/>
+			</a>
+		</div -->
+	  
+		<div id="top">
+		    Community site:  <a href="/account/signin/" >login</a>  <a href="/faq/" >faq</a> 
+		</div>
+
+    <div id="nav">
+        <a id="nav_questions" class="on" href="/questions/" >questions</a><a id="nav_tags" href="/tags/" >tags</a><a id="nav_users" href="/users/" >users</a><a id="nav_badges" href="/badges/" >badges</a><a id="nav_unanswered" href="/questions/unanswered/" >unanswered</a>
+        <a id="nav_ask" href="/questions/ask/" class="special">ask a question</a>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  
+	<div id="searchBar">
+    <form action="/search/" method="get">
+        <input type='hidden' name='csrfmiddlewaretoken' value='7OYyCSObvr6qyuGAyCSEqrQUo3rz5BM2' />
+        <div>
+            <input type="text" class="searchInput" value="" name="q" id="keywords" />
+            <input type="submit" name="Submit" value="search" class="searchBtn" />
+        </div>
+        <div class="options">
+            <input id="type-question" type="radio" value="question" name="t" 
+                checked="checked" /><label for="type-question">questions</label>
+            <input id="type-tag" type="radio" value="tag" name="t" /><label for="type-tag">tags</label>
+            <input id="type-user" type="radio" value="user" name="t" /><label for="type-user">users</label>
+        </div>
+    </form>	
+	</div>
+
+	
+
+<!-- end template header.html -->
+
+        
+
+
+
+<div id="wrapper">
+    
+    
+    <div id="room">
+        <div id="CALeft">
+            
+<div class="headNormal">
+    <h1><a href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing">Git Push says &#39;everything up-to-date&#39;, remote repo shows nothing</a></h1>
+</div>
+<div id="main-body" class="">
+    <div id="askform">
+            <table style="width:100%;" id="question-table" >
+                <tr>
+                    <td style="width:30px;vertical-align:top">
+                        <div class="vote-buttons">
+                            
+
+<a id="post-4498-upvote" title="I like this post (click again to cancel)"
+    class="ajax-command post-vote up "
+     href="/vote/4498/up/" rel="nofollow"> </a>
+<div id="post-4498-score" class="post-score"
+    title="current number of votes">
+    0
+</div>
+<a id="post-4498-downvote" title="I dont like this post (click again to cancel)"
+    class="ajax-command post-vote down"
+     href="/vote/4498/down/" rel="nofollow"> </a>
+
+                            
+
+<a id="favorite-mark" title="mark/unmark this question as favorite (click again to cancel)"
+    class="ajax-command favorite-mark "
+    href="/mark_favorite/4498/" rel="nofollow"> </a>
+<div id="favorite-count" class="favorite-count">
+   
+</div>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div id="item-right">
+                            <div class="question-body">
+                                <p>Hi all,</p>
+<p>Please note, I'm a newbie to gitweb.</p>
+<p>I have repeatedly gone over the documentation at http://docs.webfaction.com/software/git.html.  The web interface seems to be working as expected.  I've created a repository and enabled HTTP Push and postBuffer.  I've set up my project in a local repo, but everytime I attempt to push to the gitweb repo, the outcome is:</p>
+<pre><code>tone@starbox: ~/pubb_js$ git push http://ibrokeit@git.pubbin.com/pubfinder.git
+Password:
+Everything up-to-date
+</code></pre>
+<p>...but there is nothing in the remote repo.</p>
+<p>I figure if I were doing something really wrong, git would yell at me, but this looks like something is breaking somewhere and I'm not sure where to find it.  Any suggestions?</p>
+                            </div>
+                            <div id="question-tags" class="tags-container tags">
+                                
+                                    <a href="/tags/git/" class="post-tag tag-link-git"
+                                        title="see questions tagged 'git'" rel="tag">git</a>
+                                
+                                    <a href="/tags/http/" class="post-tag tag-link-http"
+                                        title="see questions tagged 'http'" rel="tag">http</a>
+                                
+                            </div>
+                            <div id="question-controls" class="post-controls">
+                                
+
+                                
+
+                            </div>
+                            <div class="post-update-info-container">
+                                    
+<div class='post-update-info post-update-info-user'>
+    <p style="line-height:12px;">
+        asked
+        <strong>20 Jul '11, 21:29</strong>
+    </p>
+    <img class="gravatar" width="32" height="32" src="https://secure.gravatar.com/avatar/9bb2fc0d071481f7d000a059bbd97e4c?s=32&amp;d=identicon&amp;r=g" alt="Tony's gravatar image" />
+    <p><a href="/users/1131/tony">Tony</a><br/>
+    <span class="score" title="1 reputation points">1</span><span title="1 badges"><span class="badge1">&#9679;</span><span class="badgecount">1</span></span><span title="1 badges"><span class="silver">&#9679;</span><span class="badgecount">1</span></span><span title="1 badges"><span class="bronze">&#9679;</span><span class="badgecount">1</span></span><br />
+    
+    <span title="Rate of the user's accepted answers" class="accept_rate">accept rate:</span>
+    <span title="Tony has no accepted answers">0&#37;</span>
+    </p>
+</div>
+
+
+                            </div>
+                            
+
+
+
+
+<div class="comments-container" id="comments-container-4498">
+    
+</div>
+<div id="comment-tools-4498" class="comment-tools">
+    
+    
+</div>
+
+
+
+
+<div class="clear"></div>
+<div id="comment-4498-form-container" class="comment-form-container">
+    
+</div>
+<div class="clear"></div>
+
+
+
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+            
+            
+                <hr/>
+                <div class="tabBar">
+                    <a name="sort-top"></a>
+                    <div class="headQuestions">
+                    One Answer:
+                    </div>
+                    
+<div class="tabsA"><a href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing?sort=active" title="most recently updated answers/comments will be shown first">active answers</a><a href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing?sort=oldest" title="oldest answers will be shown first">oldest answers</a><a href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing?sort=newest" title="newest answers will be shown first">newest answers</a><a href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing?sort=votes" class="on" title="most voted answers will be shown first">popular answers</a></div>
+
+                </div>
+                
+
+                
+                    <a name="4499"></a>
+                    <div id="answer-container-4499" class="answer ">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="width:30px;vertical-align:top">
+                                    <div class="vote-buttons">
+                                        
+
+<a id="post-4499-upvote" title="I like this post (click again to cancel)"
+    class="ajax-command post-vote up "
+     href="/vote/4499/up/" rel="nofollow"> </a>
+<div id="post-4499-score" class="post-score"
+    title="current number of votes">
+    0
+</div>
+<a id="post-4499-downvote" title="I dont like this post (click again to cancel)"
+    class="ajax-command post-vote down"
+     href="/vote/4499/down/" rel="nofollow"> </a>
+
+                                        
+
+
+    
+
+
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="item-right">
+                                        <div class="answer-body">
+                                            <p>Does a remote branch exist, and is the local branch tracking it? If not, you will want to specify to a branch, using something like:</p>
+<pre><code>git push http://ibrokeit@git.pubbin.com/pubfinder.git master
+</code></pre>
+<p>If "master" didn't exist already, then this creates the branch and should set up a "tracking branch" which means you can then push without specifying "master" next time.</p>
+<p>Also, for convenience, you can name "http://ibrokeit@git.pubbin.com/pubfinder.git" as a Remote; let's call it <em>origin</em>:</p>
+<pre><code>git remote add origin http://ibrokeit@git.pubbin.com/pubfinder.git
+</code></pre>
+<p>Then: <code>git push origin master</code> (use <code>git remote -v</code> to see your remotes).</p>
+<p>If you have the option, it's often even more preferable to clone down the empty repository, add some files, and then push back:</p>
+<pre><code>git clone http://ibrokeit@git.pubbin.com/pubfinder.git
+cd pubfinder
+(create some files)
+git add .
+git commit -m 'initial commit'
+git push origin master
+</code></pre>
+<p>In the future, we could just use <code>git push</code>; the "origin" remote and "master" branch would be inferred based on the tracking branch relationships.</p>
+<p>Lastly, a common technique for a repository that already exists locally is to:</p>
+<ol>
+<li>use <code>git push http://ibrokeit@git.pubbin.com/pubfinder.git master</code> to push the local repository up to webfaction.</li>
+<li>use <code>git clone http://ibrokeit@git.pubbin.com/pubfinder.git</code> to clone down the new repository, with tracking branches ready. This will be used instead of the original local one from now on.</li>
+<li>Push new changes with just <code>git push</code></li>
+</ol>
+<p>Hope that helps!</p>
+                                        </div>
+                                        <div class="answer-controls post-controls">
+                                            
+<span class="action-link"><a rel="nofollow" title="answer permanent link" class="ajax-command withprompt  copy" href="/answer_link/4499/">permanent link</a></span>
+                                            
+<div class="community-wiki">
+        This answer is marked "community wiki".
+        
+    </div>
+                                        </div>
+                                        <div class="post-update-info-container">
+                                            
+<div class='post-update-info post-update-info-user'>
+    <p style="line-height:12px;">
+        answered
+        <strong>20 Jul '11, 21:41</strong>
+    </p>
+    <img class="gravatar" width="32" height="32" src="https://secure.gravatar.com/avatar/0a170a495bb43ea74a65ea19eadcbcfe?s=32&amp;d=identicon&amp;r=g" alt="ryans's gravatar image" />
+    <p><a href="/users/16/ryans">ryans ♦♦</a><br/>
+    <span class="score" title="4914 reputation points"><span class="">4.9k</span></span><span title="3 badges"><span class="badge1">&#9679;</span><span class="badgecount">3</span></span><span title="25 badges"><span class="silver">&#9679;</span><span class="badgecount">25</span></span><span title="52 badges"><span class="bronze">&#9679;</span><span class="badgecount">52</span></span><br />
+    
+    <span title="Rate of the user's accepted answers" class="accept_rate">accept rate:</span>
+    <span title="ryans has 205 accepted answers">43&#37;</span>
+    </p>
+</div>
+
+    <div class='post-update-info post-update-info-edited'>
+        <p style="line-height:12px;">
+            <a href="/revisions/4499/">
+                edited
+                <strong>20 Jul '11, 21:46</strong>
+            </a>
+        </p>
+        
+    </div>
+
+
+                                        </div>
+                                        
+
+
+
+
+<div class="comments-container" id="comments-container-4499">
+    
+        <a name="4500"></a>
+        <div class="comment" id="comment-4500">
+            <div id="post-4500-score" class="comment-score"></div>
+            <div class="comment-text"><p>Awesomeness!  Adding the branch did it!</p>
+
+<p>Thanks so much!</p></div>
+            <div class="comment-info" id="comment-4500-info">
+                
+                
+                
+                
+
+                
+
+                <span class="comment-age">(20 Jul '11, 21:51)</span>
+                <a class="comment-user userinfo" href="/users/1131/tony">Tony</a>
+                <img class="gravatar" width="18" height="18" src="https://secure.gravatar.com/avatar/9bb2fc0d071481f7d000a059bbd97e4c?s=18&amp;d=identicon&amp;r=g" alt="Tony's gravatar image" />
+            </div>
+        </div>
+    
+</div>
+<div id="comment-tools-4499" class="comment-tools">
+    
+    
+</div>
+
+
+
+
+<div class="clear"></div>
+<div id="comment-4499-form-container" class="comment-form-container">
+    
+</div>
+<div class="clear"></div>
+
+
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                
+                <div class="paginator-container-left">
+                    
+                </div>
+            
+        <form id="fmanswer" action="/questions/4498/answer/" method="post">
+            <input type='hidden' name='csrfmiddlewaretoken' value='7OYyCSObvr6qyuGAyCSEqrQUo3rz5BM2' />
+            <div style="clear:both">
+            </div>
+
+            
+                <div style="padding:10px 0 0 0;">
+                    <div class="headNormal">
+                        
+                            Your answer
+                        
+                    </div>
+                </div>
+                
+
+                <div id="description" class="" >
+                    <div id="wmd-button-bar" class="wmd-panel"></div>
+                    <textarea cols="40" id="editor" name="text" rows="10">
+</textarea>
+                    <div class="preview-toggle">
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <span id="pre-collapse" 
+                                        title="Toggle the real time Markdown editor preview">
+                                            toggle preview
+                                    </span>
+                                </td>
+                                <td style="text-align: right;" id="editor-metrics"></td>
+                                
+                                <td style="text-align:right;">
+                                    <input id="id_wiki" name="wiki" type="checkbox" /> 
+                                    <span style="font-weight:normal;cursor:help" 
+                                        title="if you choose community wiki option, the question and answer do not generate points and name of author will not be shown">
+                                            <label for="id_wiki">community wiki:</label> 
+                                    </span>
+                                </td>
+                                
+                            </tr>
+
+                        </table>
+                    </div>
+                    
+                    <div id="previewer" class="wmd-preview"></div>
+                </div>
+
+                
+                <div class="question-captcha" style="float: left;">
+                    
+                    
+    <div id="recaptcha_field"></div>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+    <script type="text/javascript">
+         $(function(){
+             Recaptcha.create("6Lcwv-wSAAAAAJ-v90_5pnA2le1Ll17WfjaRSh6v", 'recaptcha_field', {
+             theme: "red"});
+         });
+    </script>
+
+
+                </div>
+                <div class="clear"></div>
+                
+
+                <p><span class="form-error"></span></p>
+                <input type="button"
+                    
+                        value="Login/Signup to Post Your Answer" 
+                    
+                    class="submit" style="float:left" onclick="submitClicked(event, this.form)"/>
+            
+        </form>
+    </div>
+</div>
+
+
+        </div>
+        <div id="CARight">
+            
+<div class="boxC" id="subscription_box">
+    <h3 class="subtitle">Follow this question</h3><strong>By Email:</strong><p>Once you sign in you will be able to subscribe for any updates here</p><strong>By RSS:</strong><p><a class="feed-icon" style="background-image:url('/m/default/media/images/feed-icon-small.png');"
+        href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing?type=rss" title="subscribe to answers"></a>
+    Answers
+</p><p><a class="feed-icon" style="background-image:url('/m/default/media/images/feed-icon-small.png');"
+        href="/questions/4498/git-push-says-everything-up-to-date-remote-repo-shows-nothing?type=rss&comments=yes" title="subscribe to comments and answers"></a>
+    Answers and Comments
+</p>
+
+</div>
+
+
+<div class="boxC" id="editor_side_bar">
+    <p class="subtitle darkred">Markdown Basics</p>
+    <ul class="list-item">
+        <li>
+            *italic* or _italic_
+        </li>
+        <li>
+			**bold** or __bold__
+        </li>
+        <li>
+            <b>link</b>:[text](http://url.com/ "title")
+
+        </li>
+
+        <li>
+            <b>image</b>?![alt text](/path/img.jpg "title")
+
+        </li>
+        <li>
+			numbered list:
+            1.  Foo
+            2.  Bar
+        </li>
+        <li>
+			to add a line break simply add two spaces to where you would like the new line to be.
+        </li>
+        <li>
+			basic HTML tags are also supported
+        </li>
+    </ul>
+    <p class='info-box-follow-up-links'>
+        <a href="/markdown_help/" target="_blank">learn more about Markdown </a>
+    </p>
+</div>
+
+
+
+
+
+
+<div class="boxC">
+    <p>
+        Question tags:
+    </p>
+    <p class="tags" >
+        
+        <a href="/tags/git/"
+            class="tag-link-git"
+            title="see questions tagged'git'using tags"
+            rel="tag">git</a> <span class="tag-number">&#215;103</span><br/>
+        
+        <a href="/tags/http/"
+            class="tag-link-http"
+            title="see questions tagged'http'using tags"
+            rel="tag">http</a> <span class="tag-number">&#215;24</span><br/>
+        
+    </p>
+    <p>
+        question asked: <strong title="July 20, 2011, 9:29 p.m.">20 Jul '11, 21:29</strong>
+    </p>
+    <p> 
+     	question was seen: <strong>16,923 times</strong>
+    </p>
+    <p> 
+        last updated: <strong title="July 20, 2011, 9:51 p.m.">20 Jul '11, 21:51</strong>
+    </p>
+</div>
+
+
+
+<div class="boxC">
+    <h3 class="subtitle">Related questions</h3>
+    <div class="questions-related">
+
+        
+        <p>
+            <a href="/questions/7443/git-push-still-gets-rpc-error-after-changing-postbuffer">git push still gets RPC error after changing postBuffer</a>
+        </p>
+        
+        <p>
+            <a href="/questions/352/git-push-not-working">Git Push Not Working</a>
+        </p>
+        
+        <p>
+            <a href="/questions/3019/git-http-error-500">Git http: error 500</a>
+        </p>
+        
+        <p>
+            <a href="/questions/658/hosting-several-sites-out-of-a-git-repository">Hosting several sites out of a git repository?</a>
+        </p>
+        
+        <p>
+            <a href="/questions/3565/gitweb-graph-log">Gitweb graph log?</a>
+        </p>
+        
+        <p>
+            <a href="/questions/6276/http-411-broken-pipe-when-i-git-push-from-local-to-webfaction">http 411, broken pipe, when I git push from local to webfaction</a>
+        </p>
+        
+        <p>
+            <a href="/questions/9052/gitlabhq-installation-webfaction">GitlabHq installation Webfaction</a>
+        </p>
+        
+        <p>
+            <a href="/questions/12107/get-git-logbranch-version-into-django-template">Get GIT log/branch version into django template</a>
+        </p>
+        
+        <p>
+            <a href="/questions/16265/how-do-i-use-a-git-repository-for-my-static-files">How do I use a git repository for my static files?</a>
+        </p>
+        
+        <p>
+            <a href="/questions/1801/would-like-my-own-domain-for-subversion-repositoryapp-please">Would like my own domain for subversion repository/app please.</a>
+        </p>
+        
+
+    </div>
+</div>
+
+
+
+        </div>
+        <div id="tail" style="clear:both;">
+            
+            
+        </div>
+    </div>
+    <div class="spacer3"></div>
+</div>
+
+        
+            <!-- div id="ground">
+                
+
+
+<div>
+    <div class="footerLinks" >
+         <a href="/about/" >about</a> <span class="link-separator"> |</span> <a href="/faq/" >faq</a> <span class="link-separator"> |</span> <a href="/privacy/" >privacy</a> <span class="link-separator"> |</span> <a href="http://www.webfaction.com/support/" target="_blank">support</a> <span class="link-separator"> |</span> <a href="http://www.webfaction.com/contact/" >contact</a> 
+    </div>
+  <p>
+     <a href="http://osqa.net" target="_blank" title="OSQA Development Build (None)">
+        powered by OSQA
+     </a>
+  </p>
+</div>
+ <div id="licenseLogo">
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+            <img src="/m/default/media/images/by-sa-88x31.png" title="Creative Commons: Attribution - Share Alike" alt="cc-by-sa" width="88" height="31" />
+  </a>
+ </div>
+
+
+            </div -->
+        
+
+<div style="padding: 50px 0 80px 0; background: url(https://www.webfaction.com/local_media/images/footer_bg.jpg) left top repeat; text-align: center">
+    <div style="width: 988px; text-align: left">
+        <table id="footertable">
+            <tr>
+                <td valign="top">
+                    <div class="columnhead">WEBFACTION</div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/">Home</a></div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/signup/">Sign up</a></div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/jobs">Jobs</a></div>
+                </td>
+                <td valign="top">
+                    <div class="columnhead">REACH US</div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/contact/">Email</a></div>
+                    <div class="columnitem"><a href="http://blog.webfaction.com/">Blog</a></div>
+                    <div class="columnitem"><a href="http://twitter.com/webfaction">Twitter</a></div>
+                    <div class="columnitem"><a href="http://www.facebook.com/webfaction">Facebook</a></div>
+                    <div class="columnitem"><a href="https://plus.google.com/104431007143754382123">Google+</a></div>
+                </td>
+                <td valign="top">
+                    <div class="columnhead">SUPPORT</div>
+                    <div class="columnitem"><a href="https://my.webfaction.com/">Control panel</a></div>
+                    <div class="columnitem"><a href="http://docs.webfaction.com/">Documentation</a></div>
+                    <div class="columnitem"><a href="http://community.webfaction.com/">Q&amp;A community site</a></div>
+                    <div class="columnitem"><a href="http://statusblog.webfaction.com/">Status blog</a></div>
+                    <div class="columnitem"><a href="https://help.webfaction.com/">Support tickets</a></div>
+                </td>
+                <td valign="top">
+                    <div class="columnhead">AFFILIATE PROGRAM</div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/affiliate-program">Affiliate program</a></div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/visuals">Visuals</a></div>
+                </td>
+                <td valign="top">
+                    <div class="columnhead">LEGAL</div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/tos">Terms of service</a></div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/aup">Acceptable use policy</a></div>
+                    <div class="columnitem"><a href="https://www.webfaction.com/privacy">Privacy policy</a></div>
+                </td>
+            </tr>
+        </table>
+        <div style="height: 1px; background: #262626; margin: 40px 0 30px 0;"></div>
+        <div>
+            <div style="float: left">
+                              <img src="https://www.webfaction.com/local_media/images/logo-black.png" />
+            </div>
+            <div style="float: right; color: #ccc">
+                © COPYRIGHT 2003-2016 SWARMA LIMITED - WEBFACTION IS A SERVICE OF SWARMA LIMITED<br>
+REGISTERED IN ENGLAND AND WALES 5729350 - VAT REGISTRATION NUMBER 877397162<br>
+5TH FLOOR, THE OLD VINYL FACTORY, HAYES, UB3 1HA, UNITED KINGDOM
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+        
+        </div>
+
+        <!-- Put all elements with fixed position here, IE6 fixed position fix: http://ryanfait.com/position-fixed-ie6/ -->
+        <div class="notify" style="display:none">
+            
+                
+            
+            <a id="close-notify" onclick="notify.close(true)">&#215;</a>
+        </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-70035626-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    </body>
+</html>
+<!-- end template base_content.html -->
