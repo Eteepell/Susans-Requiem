@@ -4,49 +4,33 @@ This book is written using LaTeX. The application is available for, well, everyt
 
 What you can and can't do is in the license, see `LICENSE' for a layman's version.
 
-Under windows the best free application is MiKTeX
-For Linux/UNIX the program I use is TeXstudio and there are many, many others for this platform.
-For android there is TeXPortal and optionally TeXpert which aren't maintained anymore but still work.
-For iOS, such as apple iPad and iPhone, aint nothing free. What's there is runs just shy of $15 and includes Texpad and TeX Writer which seem OK.
-For MACOSX the leading LaTeX app is MacTeX. 
+LaTeX apps:
 
-Additionally any text editor can be used for writing which makes it flexible to an insane degree. You just have to compile somewhere else is all.
+windows					MiKTeX
+Linux/UNIX				TeXstudio
+android					TeXPortal + any text editor
+iPhone/iPad				just shy of $15 - Texpad, TeXWriter.
+iMac					MacTeX
 
-To sync everything since I have a computer and android devices I used FolderSync so I could write on my phone when I had spare time to do so. If you
-use that app backup often and be damn careful it's not perfectly intelligent. You'll get used to the gotchas after a while. I use FreeBSD on my home computer
-so I can use the virtual terminal for some writing. It presents nothing but a black screen so I can write without distraction. It was indespensible
-for when I needed it but I don't recommend that operating system for the faint of heart.
+Additionally without the apps above any text editor can be used for writing which makes it flexible to an insane degree. You just have to compile somewhere else is all.
 
-I am just adding a repository on github to make the source generally available to fork or review. This work is not even close to draft yet and massive amounts of the source is due to be slashed and replaced.
+Anything I refer to as "manly" is highly technical and probably will make most people angry from the steep learning curve (including me, heh.)
 
-For anything in the this book source package I tried to use file formats that are compatible with free software (as in FOSS) and as widely compatible as I could. 
-Sometimes that means strange formats like RTF that can be imported into any word processor (ie. word) or the integrated windows program wordpad. I also have a lot in libreoffice format for the same reason. One would either need libreoffice or the ability to upload to a google account and convert. Most MS office versions can convert most libreoffice documents now too.
+I started using ftp to sync all my devices but you could use google drive, dropbox, or anything convenient. In the end I started using "git" on "github" because I wanted to show my wares to people and open the possibility of having others join the effort in different ways. I even got a free webpage so I could put it in the book source to invite readers to visit!
 
-The Susan.tex file is the root document that contains the code used to format the book. Always compile from this file only. I grabbed it for free off the 
-internet (I didn't write the code myself, I may be crazy but I ain't that crazy) and changed it somewhat to suit my needs. It came from 
+I use FreeBSD on my home computer so I can use the virtual terminal for some writing. It presents nothing but a black screen so I can write without distraction. It was indespensible for when I needed it but I don't recommend that operating system for the faint of heart. A nice uncluttered operating system that isn't quite so manly would be any linux running mate. It's just opinion but I think mate is a good simple screen. Ubuntu Mate would be the most popular of the type. It also has virtual terminals if you wanted to try a hand with it. "vi" is the best editor to use in the terminal but there will be a help file for the concept in the groundwork folder under "manly". More or less required apps will be listed in Groundwork.
+
+For anything in the this book source package I tried to use file formats that are compatible with free software (as in FOSS) and as widely compatible as I could. The software used I will list under manly if you want to follow a similar path. libreoffice isn't manly at all though so keep it as a priority if you don't already have MSoffice that can import odt files. Anything can import RTF files
+
+The Susan.tex file is the root document that contains the source used to format the book. Always compile from this file only. I grabbed it for free off the internet (I didn't write the code myself, I may be crazy but I ain't that crazy) and changed it somewhat to suit my needs. It came from 
 Overleaf (https://www.overleaf.com/latex/templates/fiction-novel/pjdthvgdtsfy#.WBITwsIpAol).
 
-I recommend producing a PDF and sending it straight to the printer (ie. publish as is) since LaTeX is a typesetting program no further processing needs to take
-place before it's ready for a print run (within your own judgement of course).
+The other tex files are the chapters. They are almost straight text and the numbers designate the chapter they contain.
 
-To produce an e-book I used Pandoc to make an epub usable in most ereaders, then Calibre to convert it to a mobi format for Kindles. It works well. recently there has been a glitch in pandoc and the title page wont compile into epubs anymore. A fix to allow compilation has been placed in the root folder for volume 0
+The pdf produced from a compilation is fully typeset and ready for the printers to produce books. Compilation from pandoc to epub. The epub should be touched up using sigil then it's ready for reading on ereaders and passing that epub through calibre to get a mobi file makes it ready for use on kindles.
 
-So if you don't like the book, don't bitch and moan, put your ass at a keyboard and fix it yourself dumbass. I would like to read it when you're done.
+recently there has been a glitch in pandoc and the title page wont compile into epubs anymore. A fix to allow compilation is in the book source as pandoc_susan.tex so run pandoc on that file instead and it works.
 
-Tools used under FreeBSD for writing:
-
-vidcontrol
-vidcontrol -i mode 
-vidcontrol MODE_xxx 
-
-    allscreens="MODE_xxx"
-
-and put this in " /etc/rc.conf " to be persistent on reboot.
-
-
-plot outline is 30x90 for CAD printers at UPS or other locations, so you can
-have room to plan adjustments.
-
-http://eteepell.github.io/Susans-Requiem/
+So if you don't like the book, fork it. Show us what you got :)
 
 

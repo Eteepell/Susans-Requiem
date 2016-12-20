@@ -1,0 +1,30 @@
+Texlive+TeXstudio (readme has list of alternatives)
+produced pdf for publishing
+
+pandoc, produces epub for ereaders (manly)
+sigil for touchup of the ebook pandoc produces
+calibre to change the epub to mobi for use with kindles
+
+libreoffice for groundwork, organizing ideas, canon, characters, etc.
+
+leo to generate a solid outline for the plot (manly)
+
+git to keep a repository of source to use on multiple devices and using github to show to people, and create a webpage really easy.(manly)
+
+vi for when I used virtual terminals to eliminate distraction (manly).
+
+
+To get started the most basic apps are these:
+
+LaTeX apps:
+
+windows					MiKTeX
+Linux/UNIX				TeXstudio
+android					TeXPortal + any text editor
+iPhone/iPad				just shy of $15 - Texpad, TeXWriter.
+iMac					MacTeX
+
+Maybe an office program (Libreoffice, MSoffice, googleApps, etc.)
+
+That's it. Anything else is gravy.
+
