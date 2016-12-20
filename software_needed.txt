@@ -1,30 +1,13 @@
-Texlive+TeXstudio (readme has list of alternatives)
-produced pdf for publishing
+This book is written using LaTeX. It's all you need to get started working on the book.
+The application is available for, well, everything from phones to tablets to computers usually for free.
 
-pandoc, produces epub for ereaders (manly)
-sigil for touchup of the ebook pandoc produces
-calibre to change the epub to mobi for use with kindles
+What you can and can't do is in the license, see `LICENSE' for a layman's version.
 
-libreoffice for groundwork, organizing ideas, canon, characters, etc.
-
-leo to generate a solid outline for the plot (manly)
-
-git to keep a repository of source to use on multiple devices and using github to show to people, and create a webpage really easy.(manly)
-
-vi for when I used virtual terminals to eliminate distraction (manly).
-
-
-To get started the most basic apps are these:
-
-LaTeX apps:
+example LaTeX apps:
 
 windows					MiKTeX
 Linux/UNIX				TeXstudio
 android					TeXPortal + any text editor
 iPhone/iPad				just shy of $15 - Texpad, TeXWriter.
 iMac					MacTeX
-
-Maybe an office program (Libreoffice, MSoffice, googleApps, etc.)
-
-That's it. Anything else is gravy.
 
