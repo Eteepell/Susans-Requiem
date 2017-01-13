@@ -1,0 +1,21 @@
+after cloning to copy changes back and forth think of a laundromat.
+
+pull the coin tray out
+add the coins
+shove in the coin try to commit the coins
+push the button to start
+
+just copy the commands exactly(including the dots, and spaces).
+git pull
+git add .
+git commit -m.
+git push
+
+You could look up what they mean if you want, or just invoke the incantations
+blindly which works just as well.
+
+Be careful to do that everytime you work with your book source, both before and
+after, because if you modify the same file on two different devices and the 
+changes conflict you are going to pull your hair out trying to get it sorted 
+out.
+
