@@ -1,45 +1,43 @@
-% universal settings
+% UNIVERSAL SETTINGS
+% document structure
 \documentclass[12pt,twoside,onecolumn,openright,extrafontsizes]{memoir}
-%\setstocksize{9in}{6in}
-%\usepackage[layoutsize={9in,6in}]{geometry}
 \usepackage[utf8x]{inputenc}
-%\usepackage[T1]{fontenc}
+
+% ebgaramond font package
 \usepackage[cmintegrals,cmbraces]{newtxmath}
-%\usepackage{tgchorus}
 \usepackage{ebgaramond-maths}
-%\usepackage[osf]{Alegreya,AlegreyaSans}
 \usepackage[T1]{fontenc}
 
-\usepackage{courier}
-\usepackage{wrapfig}
-\usepackage{graphicx}
-\usepackage{lettrine}
-\renewcommand{\LettrineTextFont}{\normalfont}
-\newcommand{\chichenitza}{Chich\'{e}n Itz\'{a}\:}
-\newcommand{\parasep}{
-	\begin{center} 
-		\includegraphics[scale=.5]{Images/hrule.png} 
-	\end{center}}
-\newenvironment{terminalview}{\fontfamily{courier}\selectfont}{\par}
+% Predefined commands
 \newcommand*\NewPage{\newpage\thispagestyle{empty}\mbox{}}
-\graphicspath{ {Images/} }
-
+\newcommand{\chichenitza}{Chich\'{e}n Itz\'{a}\:}
 
 % PACKAGE DEFINITION
 % typographical packages
 \usepackage{microtype} % for micro-typographical adjustments
 \usepackage{setspace} % for line spacing
 \usepackage{lettrine} % for drop caps and awesome chapter beginnings
+	\renewcommand{\LettrineTextFont}{\normalfont}
 \usepackage{titlesec} % for manipulation of chapter titles
 
 % for placeholder text
 \usepackage{lipsum} % to generate Lorem Ipsum
 
+% graphics package
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\newcommand{\parasep}{
+	\begin{center} 
+		\includegraphics[scale=.5]{Images/hrule.png} 
+	\end{center}}
+\graphicspath{Images/}
+
 % other
 \usepackage{calc}
 \usepackage{hologo}
 \usepackage[hidelinks]{hyperref}
-%\usepackage{showframe}
+\usepackage{verbatim}
+
 
 % PHYSICAL DOCUMENT SETUP
 % media settings
@@ -51,11 +49,8 @@
 \setlength{\parindent}{0.5em}
 
 % defining the title and the author
-%\title{\LaTeX{} ePub Template}
-%\title{\textsc{How I Started to Love {\fontfamily{cmr}\selectfont\LaTeX{}}}}
 \title{Susan Rodriguez: The Quickening}
 \author{Eric B. Teepell}
-% \newcommand{\ISBN}{0-000-00000-2}
 \newcommand{\press}{Susan's Requiem series prequel}
 
 % custom second title page
