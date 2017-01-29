@@ -1,5 +1,15 @@
+% The Susan's Requiem master file.
+
+
+%	For pandoc compiles to workaround a bug in pandoc, in this source go to "begin the document" and under "half 
+% title page" comment out "\halftitlepage" then comment out the "\titleM". The pandoc 
+% error is senseless and the workaround is arcane and magical. But it works. The result isn't ..too.. bad. Any 
+% other compilers will likely work fine without that godawful workaround.
+
+
 % UNIVERSAL SETTINGS
 % document structure
+
 \documentclass[12pt,twoside,onecolumn,openright,extrafontsizes]{memoir}
 \usepackage[utf8x]{inputenc}
 
@@ -57,6 +67,7 @@
 \newcommand{\press}{Susan's Requiem series prequel}
 
 % custom second title page
+
 \makeatletter
 \newcommand*\halftitlepage{\begingroup % Misericords, T&H p 153
   \setlength\drop{0.1\textheight}
@@ -69,8 +80,8 @@
   \end{center}
 \endgroup}
 \makeatother
-
 % custom title page
+
 \thispagestyle{empty}
 \makeatletter
 \newlength\drop
@@ -100,6 +111,7 @@
 {0pt}
 {\vspace{18pt}\centering}[\vspace{42pt}]
 
+
 % typographical settings for the body text
 \setlength{\parskip}{0em}
 \linespread{1.04}
@@ -128,6 +140,7 @@
 % END HEADER AND FOOTER MANIPULATION
 
 % table of contents customisation
+
 \renewcommand\contentsname{\normalfont\scshape Contents}
 \renewcommand\cftchapterfont{\normalfont}
 \renewcommand{\cftchapterpagefont}{\normalfont}
@@ -139,12 +152,13 @@
 
 % BEGIN THE DOCUMENT
 \begin{document}
+
 \pagestyle{empty}
 % the half title page
-\halftitlepage
+% \halftitlepage
 \cleardoublepage
 % the title page
-\titleM
+% \titleM
 \clearpage
 % copyright page
 \noindent{\small{This novel is entirely a work of fiction. The names, characters and incidents portrayed in it are the product of the author's imagination. Any resemblance to actual persons, living or dead, or events or localities is entirely coincidental.\par\vfill\noindent Pre-Draft Edition\space\today\\
@@ -154,7 +168,7 @@
 
 \begin{center}
  	\centering
-	\includegraphics[width=0.25\linewidth=0.25]{license}
+	\includegraphics[width=0.25\linewidth=0.25]{license.png}
 \end{center}
 
 \newpage
@@ -233,47 +247,45 @@ That is where the Dresden files story ends and the Susan's Requiem story begins.
 \input{Susan-ch1.tex}
 \chapter{Jiminy the Demon}
 \input{Susan-ch2.tex}
-\chapter{Knights of the Fellowship}
-\input{Susan-ch3.tex}
 
-\begin{comment}
-\chapter{D\ae mons Rise}
-\lipsum[21-40]
-\chapter{Corporate Zombies}
-\lipsum[41-60]
-\chapter{Ooh Rah}
-\lipsum[61-80]
-\chapter{Major League}
-\lipsum[81-100]
-\chapter{Sing Sing of Desire}
-\lipsum[1-20]
-\chapter{I Brutally Love You}
-\lipsum[21-40]
-\chapter{The devil went down to Georgia}
-\lipsum[41-60]
-\chapter{A rose among the thorns}
-\lipsum[61-80]
-\chapter{Homecoming Queen}
-\lipsum[81-100]
-\chapter{Even Steven}
-\lipsum[1-20]
-\chapter{Return in Glory}
-\lipsum[21-40]
-\chapter{Chapter 15}
-\lipsum[41-60]
-\chapter{Chapter 16}
-\lipsum[61-80]
-\chapter{Chapter 17}
-\lipsum[81-100]
-\chapter{Chapter 18}
-\lipsum[1-20]
-\chapter{Chapter 19}
-\lipsum[21-40]
-\chapter{Chapter 20}
-\lipsum[41-60]
-\chapter{Dedication to Lilith}
-\input{Lilith.tex}
-\end{comment}
+% \chapter{Knights of the Fellowship}
+% \input{Susan-ch3.tex}
+% \chapter{D\ae mons Rise}
+% \lipsum[21-40]
+% \chapter{Corporate Zombies}
+% \lipsum[41-60]
+% \chapter{Ooh Rah}
+% \lipsum[61-80]
+% \chapter{Major League}
+% \lipsum[81-100]
+% \chapter{Sing Sing of Desire}
+% \lipsum[1-20]
+% \chapter{I Brutally Love You}
+% \lipsum[21-40]
+% \chapter{The devil went down to Georgia}
+% \lipsum[41-60]
+% \chapter{A rose among the thorns}
+% \lipsum[61-80]
+% \chapter{Homecoming Queen}
+% \lipsum[81-100]
+% \chapter{Even Steven}
+% \lipsum[1-20]
+% \chapter{Return in Glory}
+% \lipsum[21-40]
+% \chapter{Chapter 15}
+% \lipsum[41-60]
+% \chapter{Chapter 16}
+% \lipsum[61-80]
+% \chapter{Chapter 17}
+% \lipsum[81-100]
+% \chapter{Chapter 18}
+% \lipsum[1-20]
+% \chapter{Chapter 19}
+% \lipsum[21-40]
+% \chapter{Chapter 20}
+% \lipsum[41-60]
+% \chapter{Dedication to Lilith}
+% \input{Lilith.tex}
 \chapter{Legal Licence}
 \input{license.tex}
 
