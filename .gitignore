@@ -1,9 +1,9 @@
 *.aux
 *.log
 *.out
-Susan*.pdf
-Susan*.epub
-Susan*.mobi
+Main*.pdf
+Main*.epub
+Main*.mobi
 *.synctex.gz
 *.toc
 
