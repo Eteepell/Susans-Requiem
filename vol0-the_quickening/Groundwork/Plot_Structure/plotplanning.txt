@@ -30,6 +30,7 @@
  =scene
 -2 fireteams of fell92ship in firefight. One are slavers, start sniping.
 =misc scene,sequel.
+
 -joins 1 team south to camp. Power struggle much worse in the south.
  Black c9urt, spirits battles. Etheric grubs. phage.
 *Susan struggles with her thrall to hqve time together for feeding. During
