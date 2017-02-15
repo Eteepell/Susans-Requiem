@@ -1,0 +1,4 @@
+\ProvidesFile{t1enochian.fd}
+\DeclareFontFamily{T1}{enochian}{}
+\DeclareFontShape{T1}{enochian}{m}{n}{ <-> enochian}{}
+\pdfmapline{+enochian\space <enochian.ttf\space <T1-WGL4.enc}

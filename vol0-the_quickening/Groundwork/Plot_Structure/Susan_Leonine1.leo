@@ -40,7 +40,15 @@
 <v t="daddy.20170209014300.1"><vh>*Scene[3.1] fellowship team stands down.</vh></v>
 <v t="daddy.20170209015117.1"><vh>*Sequel[3.1] Loss of veronica</vh></v>
 <v t="daddy.20170209020552.1"><vh>*Scene/Sequel[3.2] Jack defeats Jaguars</vh></v>
-<v t="daddy.20170209021911.1"><vh>*Scene[3.3] Attack from the road</vh></v>
+<v t="daddy.20170209021911.1" a="E"><vh>*Scene[3.3] Attack from the road</vh>
+<v t="daddy.20170213200141.1"><vh>Inbound fire, hit the ground</vh></v>
+<v t="daddy.20170213200247.1"><vh>Thralls advised telepathically dive.</vh></v>
+<v t="daddy.20170213200430.1"><vh>Susan performs tasks supernaturally</vh></v>
+<v t="daddy.20170213200609.1"><vh>Sarg calls her on her ability</vh></v>
+<v t="daddy.20170213203629.1"><vh>Heals Jamar with her vampiric abilities</vh></v>
+<v t="daddy.20170213203907.1"><vh>Tells thralls to move south to sarg</vh></v>
+<v t="daddy.20170213204046.1" a="M"><vh>Head for a natural trench</vh></v>
+</v>
 </v>
 </v>
 </vnodes>
@@ -80,5 +88,16 @@ determines the existence of telepathic link
 Gets a feed from all thralls by the end of this sequence.</t>
 <t tx="daddy.20170209020552.1"></t>
 <t tx="daddy.20170209021911.1"></t>
+<t tx="daddy.20170213200141.1"></t>
+<t tx="daddy.20170213200247.1">First use of telepathic power with thralls. Done so instinctively.
+</t>
+<t tx="daddy.20170213200430.1"></t>
+<t tx="daddy.20170213200609.1">sarg advised she is a 'snake eater'
+he shocked again at speed he gets to jamar
+
+</t>
+<t tx="daddy.20170213203629.1"></t>
+<t tx="daddy.20170213203907.1"></t>
+<t tx="daddy.20170213204046.1"></t>
 </tnodes>
 </leo_file>

@@ -1,0 +1,4 @@
+\ProvidesFile{t1theban.fd}
+\DeclareFontFamily{T1}{theban}{}
+\DeclareFontShape{T1}{theban}{m}{n}{ <-> theban}{}
+\pdfmapline{+theban\space <theban.ttf\space <T1-WGL4.enc}

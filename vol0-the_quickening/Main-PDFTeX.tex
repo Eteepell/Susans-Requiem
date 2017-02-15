@@ -21,6 +21,12 @@
 % Predefined commands
 \newcommand*\NewPage{\newpage\thispagestyle{empty}\mbox{}}
 
+% Custom TTF fonts
+\newcommand\theban[1]{{\usefont{T1}{theban}{m}{n} #1 }}
+\newcommand\enochian[1]{{\usefont{T1}{enochian}{m}{n} #1 }}
+\newcommand\terminal[1]{{\usefont{T1}{vt220}{m}{n} #1 }}
+\newcommand\terminus[1]{{\usefont{T1}{terminus}{m}{n} #1 }}
+
 % Text macros
 \def\chichenitza*{Chich\'{e}n Itz\'{a}}
 
@@ -30,6 +36,19 @@
 \usepackage{setspace} % for line spacing
 \usepackage{lettrine} % for drop caps and awesome chapter beginnings
 	\renewcommand{\LettrineTextFont}{\normalfont}
+\usepackage[ttdefault=true]{AnonymousPro}
+		\makeatletter
+		\newcommand{\verbatimfontfamily}[1]{
+			\def\verbatim@font{\fontfamily{#1}\selectfont\tiny}}
+		\makeatother
+				\verbatimfontfamily{AnonymousPro}
+	
+% \makeatletter
+% \renewcommand\verbatim@font{\small\bfseries}
+% \makeatletter
+
+
+
 \usepackage{titlesec} % for manipulation of chapter titles
 
 % for placeholder text

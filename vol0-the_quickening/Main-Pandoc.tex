@@ -31,6 +31,12 @@
 \usepackage[english]{babel}
 \usepackage{url}
 
+% Custom TTF fonts (crash avoidance)
+\newcommand\theban[1]{{\usefont{T1}{theban}{m}{n} #1 }}
+\newcommand\enochian[1]{{\usefont{T1}{enochian}{m}{n} #1 }}
+\newcommand\terminal[1]{{\usefont{T1}{vt220}{m}{n} #1 }}
+\newcommand\terminus[1]{{\usefont{T1}{terminus}{m}{n} #1 }}
+
 % Text macros
 \def\chichenitza*{Chich\'{e}n Itz\'{a}}
 
@@ -38,6 +44,13 @@
 % typographical packages
 \usepackage{lettrine} % for drop caps and awesome chapter beginnings
 	\renewcommand{\LettrineTextFont}{\normalfont}
+	\usepackage[ttdefault=true]{AnonymousPro}
+	\makeatletter
+	\newcommand{\verbatimfontfamily}[1]{
+		\def\verbatim@font{\fontfamily{#1}\selectfont\tiny}}
+	\makeatother
+	\verbatimfontfamily{AnonymousPro}
+	
 
 % for placeholder text
 \usepackage{lipsum} % to generate Lorem Ipsum

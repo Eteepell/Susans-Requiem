@@ -1,0 +1,4 @@
+\ProvidesFile{t1vt220.fd}
+\DeclareFontFamily{T1}{vt220}{}
+\DeclareFontShape{T1}{vt220}{m}{n}{ <-> vt220}{}
+\pdfmapline{+vt220\space <vt220.ttf\space <T1-WGL4.enc}

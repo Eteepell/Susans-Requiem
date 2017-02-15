@@ -1,0 +1,4 @@
+\ProvidesFile{t1terminus.fd}
+\DeclareFontFamily{T1}{terminus}{}
+\DeclareFontShape{T1}{terminus}{m}{n}{ <-> terminus}{}
+\pdfmapline{+terminus\space <terminus.ttf\space <T1-WGL4.enc}
