@@ -36,19 +36,33 @@
 <v t="daddy.20170209013157.1"><vh>*Sequel[2.2] Walking with them</vh></v>
 <v t="daddy.20170209014126.1"><vh>*Scene[2.3] Fellowship team</vh></v>
 </v>
-<v t="daddy.20170209014226.1" a="E"><vh>Chapter 3 "Stay on Mission"</vh>
+<v t="daddy.20170209014226.1"><vh>Chapter 3 "Stay on Mission"</vh>
 <v t="daddy.20170209014300.1"><vh>*Scene[3.1] fellowship team stands down.</vh></v>
 <v t="daddy.20170209015117.1"><vh>*Sequel[3.1] Loss of veronica</vh></v>
 <v t="daddy.20170209020552.1"><vh>*Scene/Sequel[3.2] Jack defeats Jaguars</vh></v>
-<v t="daddy.20170209021911.1" a="E"><vh>*Scene[3.3] Attack from the road</vh>
+<v t="daddy.20170209021911.1"><vh>*Scene[3.3] Attack from the road</vh>
 <v t="daddy.20170213200141.1"><vh>Inbound fire, hit the ground</vh></v>
 <v t="daddy.20170213200247.1"><vh>Thralls advised telepathically dive.</vh></v>
 <v t="daddy.20170213200430.1"><vh>Susan performs tasks supernaturally</vh></v>
 <v t="daddy.20170213200609.1"><vh>Sarg calls her on her ability</vh></v>
 <v t="daddy.20170213203629.1"><vh>Heals Jamar with her vampiric abilities</vh></v>
 <v t="daddy.20170213203907.1"><vh>Tells thralls to move south to sarg</vh></v>
-<v t="daddy.20170213204046.1" a="M"><vh>Head for a natural trench</vh></v>
+<v t="daddy.20170304044403.1"><vh>Susan attacks enemies north</vh>
+<v t="daddy.20170213204046.1"><vh>Head for a natural trench</vh>
+<v t="daddy.20170304044527.1"><vh>Susan decides to scare them</vh></v>
 </v>
+<v t="daddy.20170304045139.1"><vh>Takes the first enemy</vh></v>
+<v t="daddy.20170304045226.1"><vh>Pursues raiders taking terrifying actions</vh></v>
+<v t="daddy.20170304050707.1"><vh>The raiders break out supernatural ordinance</vh></v>
+<v t="daddy.20170304051158.1"><vh>Susan charges the raiders, protecting Jamar</vh></v>
+<v t="daddy.20170304051530.1"><vh>She is driven back, retreats south to sarg</vh></v>
+</v>
+<v t="daddy.20170304051954.1"><vh>Edgar loses his sanity using black magic</vh></v>
+<v t="daddy.20170304052217.1"><vh>Laura needs to fix APC before team is killed</vh></v>
+</v>
+</v>
+<v t="daddy.20170304052246.1" a="E"><vh>Chapter 4 "Collateral Damage"</vh>
+<v t="daddy.20170304053203.1"><vh>Spooks spell is seen, he is mad.</vh></v>
 </v>
 </v>
 </vnodes>
@@ -99,5 +113,16 @@ he shocked again at speed he gets to jamar
 <t tx="daddy.20170213203629.1"></t>
 <t tx="daddy.20170213203907.1"></t>
 <t tx="daddy.20170213204046.1"></t>
+<t tx="daddy.20170304044403.1"></t>
+<t tx="daddy.20170304044527.1">Notices she has vampiric vision in daytime with nictitating membranes that make her eyes pure white.</t>
+<t tx="daddy.20170304045139.1"></t>
+<t tx="daddy.20170304045226.1"></t>
+<t tx="daddy.20170304050707.1"></t>
+<t tx="daddy.20170304051158.1"></t>
+<t tx="daddy.20170304051530.1"></t>
+<t tx="daddy.20170304051954.1">but saves the team by doing it.</t>
+<t tx="daddy.20170304052217.1"></t>
+<t tx="daddy.20170304052246.1"></t>
+<t tx="daddy.20170304053203.1"></t>
 </tnodes>
 </leo_file>
