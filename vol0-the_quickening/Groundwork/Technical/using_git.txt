@@ -6,6 +6,7 @@ pick a folder on your computer for your book source, right click the folder and 
 
 just copy the commands exactly(including the dots, and spaces).
 
+git config --global http.sslVerify false
 git clone https://github.com/eteepell/Susans-Requiem/
 cd Susans-Requiem
 git config user.name "YOUR USERNAME"
@@ -18,6 +19,7 @@ So say your username you picked was JohnDoe, your email address is
 johndoe@gmail.com and the projectname is MySweetSusan it would look 
 like this:
 
+git config --global http.sslVerify false
 git clone https://github.com/eteepell/Susans-Requiem/
 cd Susans-Requiem
 git config user.name "JohnDoe"
@@ -33,7 +35,7 @@ after cloning to copy changes back and forth think of a laundromat.
 
 pull the coin tray out
 add the coins
-shove in the coin try to commit the coins
+shove in the coin try (commit the coins)
 push the button to start
 
 just copy the commands exactly(including the dots, and spaces).
