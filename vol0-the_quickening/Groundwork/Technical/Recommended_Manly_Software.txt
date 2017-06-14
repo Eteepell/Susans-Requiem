@@ -1,6 +1,7 @@
 Recommended Manly Software (cue Tim Taylor grunt)
 
 pandoc, produces epub for ereaders (command line program)
+pdftk for touchup of the pdf produced, and attach files to pdf
 sigil for touchup of the ebook pandoc produces
 calibre to change the epub to mobi for use with kindles
 
