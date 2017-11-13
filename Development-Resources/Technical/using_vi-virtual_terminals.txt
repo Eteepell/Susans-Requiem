@@ -1,0 +1,32 @@
+You start in the xwindows interface. To get to a virtual terminal use CTRL-ALT-F# like ctrl-alt-f2. There are a number of 
+them, log in with the same username and password you use for the computer. Once you are in a virtual terminal you can use 
+alt-f# to move between them or back to the xwindows interface. alt-f9 is ussually the number for xwindows as it is really
+a kind of terminal itself. my computer has f1 through f9 for instance where f9 is xwindows and f1 is 'console' that gets
+lots of annoying system messages popping up. I recommend not using that one. In virtual terminals you will need to know
+how to use the 'cd' command to go to the right folder and the 'ls' command to show what's in there. the pwd command is useful
+to show where you are. Microsoft Windows does not have virtual terminals.
+
+
+
+if not using virtual terminals go to the folder and right click on it, choose terminal or bash or whatever.
+that opens a shell window to type in. type vi and then the filename ie. 'vi myfile.tex'
+
+The editor is 'modal' having a command mode and editing mode.
+
+command mode lets you move around and make commands, edit as it suggests lets you enter text.
+
+you start in command mode, press 'a' to start typing after the current letter or 'i' for before, or 'R' to overwrite.
+the commands are CASE-SENSITIVE.
+when done typing hit escape to go back to command mode
+
+useful gotcha to know is letting the program wrap lines means it's still a big line and you can't up/down through it.
+
+useful commands to know, ':wq' to save and exit and ':q!' to exit without saving (if you do a 'mybad')
+also useful for wrapped lines especially is '$' to get to the end of the line and if you enter a number and w like '15w' 
+it jumps forward that many words which helps immensely with long lines that are wrapped.
+
+
+A suggestion is to use vi just to write. write through typos and grammar mistakes and fix them up afterwards. Unless
+someone is well versed in using the program the skill needed to edit large scale work like in a book is significant as
+you will see soon enough.
+

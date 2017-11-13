@@ -1,0 +1,12 @@
+         AN ENOCHIAN FONT FROM THE NU ISIS WORKING GROUP
+
+nienrg__.ttf  NI Enochian
+
+This version of the Enochian script has been closely conformed to the 
+final form of the letters in the Dee diaries (as reproduced by Laycock 
+in _Complete Enochian Dictionary_).  Besides the 21 Enochian letters 
+this font also includes Dee's "monas" symbol (on the } key).
+
+This font may be freely redistributed and used provided that the header 
+information in the font file including the line "This freeware font created 
+by the Nu Isis Working Group" is left intact in any distribution. 

@@ -1,0 +1,32 @@
+macrocosm Cause(background)/Effect(plot developments)
+ill/raging epidemic
+
+microcosm(external) stimulus/[internalization]/response
+
+scene:
+statement of goal
+introduction and development of conflict
+failure of the character to reach his goal, a tactical disaster.
+-yes, but (so hard it wont work)
+-no 
+-no, and furthermore
+
+
+transition/sequel
+
+transition:
+change of time or place since last scene
+
+sequel:
+emotion
+thought
+-review
+-analysis
+-planning
+--loops
+decision [needs to meet with whoever]
+action [makes the call to setup that meeting]
+
+
+
+

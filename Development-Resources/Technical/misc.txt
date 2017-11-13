@@ -1,0 +1,3 @@
+plot outline is 30x90 for CAD printers at UPS or other locations, so you can
+have room to plan adjustments.
+

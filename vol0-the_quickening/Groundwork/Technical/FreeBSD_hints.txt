@@ -1,9 +1,0 @@
-to modify virtual terminal resolution:
-vidcontrol
-vidcontrol -i mode 
-vidcontrol MODE_xxx 
-
-    allscreens="MODE_xxx"
-
-and put this in " /etc/rc.conf " to be persistent on reboot.
-
