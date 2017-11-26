@@ -6,5 +6,4 @@ Main*.epub
 Main*.mobi
 *.synctex.gz
 *.toc
-
-
+.~lock*
