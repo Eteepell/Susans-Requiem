@@ -1,0 +1,41 @@
+text
+DejaVu Sans Mono 10
+color #000000
+misspelled #ff0000
+
+window background
+color #ffffff
+image hells-kitchen-manhattan-new-hell-s-kitchen-manhattan-new-york-8th-ave-w-40th-st-of-hells-kitchen-manhattan.jpg
+
+stretched
+
+text background
+color #000000
+opacity 0
+position right
+width 700 pixels
+yes, round text background corners
+radius 10 pixels
+yes, blur text background
+radius 15 pixels
+no, text background drop shadow
+
+margins
+window 25 pixels
+page 10 pixels
+
+line spacing
+type single
+
+paragraph spacing
+tab width 10 pixels
+above 0 pixels
+below 5 pixels
+yes, indent first line
+
+
+
+
+
+
+

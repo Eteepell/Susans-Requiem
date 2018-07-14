@@ -1,0 +1,33 @@
+text
+color html #2317b7
+5th grade cursive 9
+color #ff0000
+
+window background
+color #7c562f
+image Lined-Paper-Template-21-11x11
+type scaled
+
+text background
+color #ffffff
+opacity 0
+position centered
+width 600 pixels
+no, round text background corners
+no, blur text background
+no, text background drop shadow
+
+margins
+window 65 pixels
+page 0 pixels
+
+line spacing
+type single
+
+paragraph spacing
+tab width 48 pixels
+above 0 pixels
+below 16 pixels
+no, indent first line
+
+

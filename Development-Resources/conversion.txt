@@ -1,0 +1,5 @@
+
+
+tex4ht oolatex filename.tex
+pandoc -f latex -t docx file.tex
+http://pdf2docx.com

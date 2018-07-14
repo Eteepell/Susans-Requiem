@@ -1,0 +1,33 @@
+text
+color #7d6b4a
+font courier 10 pitch 12
+misspe #ff0000
+
+window background
+color #ffffff
+image 6017-writeroom-11x11.png
+type stretched
+
+text background
+color #ffffff
+opacity 0
+position centered
+width 1200 pixels
+no, round text background corners
+no, blur text background
+no, text background drop shadow
+
+margins
+window 65 pixels
+page 0 pixels
+
+line spacing
+type single
+
+paragraph spacing
+tab width 10 pixels
+above 0 pixels
+below 5 pixels
+yes, indent first line
+
+

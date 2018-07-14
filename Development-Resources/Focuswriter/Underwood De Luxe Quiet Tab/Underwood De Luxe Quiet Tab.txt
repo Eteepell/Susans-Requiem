@@ -1,0 +1,32 @@
+text
+color #000000
+font underwood quiet tab 10
+misspe #ff0000
+
+window background
+color #3c1514
+image rkkqbzfmxqa01.jpg
+type zoomed
+
+text background
+color #ffffff
+opacity 50
+position centered
+width 700 pixels
+no, round text background corners
+no, blur text background
+no, text background drop shadow
+
+margins
+window 65 pixels
+page 0 pixels
+
+line spacing
+1.5 lines
+
+paragraph spacing
+tab width 48 pixels
+above 0 pixels
+below 0 pixels
+yes, indent first line
+

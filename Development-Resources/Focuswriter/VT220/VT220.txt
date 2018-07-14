@@ -1,0 +1,31 @@
+color #0cf155
+font glass TTY VT220 15
+misspe #0d5322
+
+window background
+color #000000
+image <none>
+type no image
+
+text background
+color #000000
+opacity 0
+position centered
+width 1200 pixels
+no, round text background corners
+no, blur text background
+no, text background drop shadow
+
+margins
+window 65 pixels
+page 0 pixels
+
+line spacing
+type single
+
+paragraph spacing
+tab width 10 pixels
+above 0 pixels
+below 0 pixels
+yes, indent first line
+

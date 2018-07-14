@@ -1,0 +1,39 @@
+text
+color #000000
+font dejavu sans mono 10
+misspe #ff0000
+
+window background
+color #2a2a2a
+image ivory-off-white-paper-texture-11x11in-portrait
+type no image
+
+text background
+color #ffffff
+opacity 100
+position centered
+width 700 pixels
+yes, round text background corners
+radius 10 pixels
+yes, blur text background
+radius 32 pixels
+yes, text background drop shadow
+color #000000
+radius 8 pixels
+vertical offset 2 pixels
+
+margins
+window 25 pixels
+page 10 pixels
+
+line spacing
+single
+
+paragraph spacing
+tab width 10 pixels
+above 0 pixels
+below 5 pixels
+yes, indent first line
+
+
+
